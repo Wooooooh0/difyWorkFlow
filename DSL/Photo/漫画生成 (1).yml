@@ -1,0 +1,676 @@
+app:
+  description: ''
+  icon: "\U0001F916"
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: "\u6F2B\u753B\u751F\u6210"
+workflow:
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: llm-source-1721036391573-target
+      source: llm
+      sourceHandle: source
+      target: '1721036391573'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1721036459061-source-1721036448691-target
+      source: '1721036459061'
+      sourceHandle: source
+      target: '1721036448691'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1721036448691'
+        sourceType: llm
+        targetType: llm
+      id: 1721036483080-source-1721036579011-target
+      source: '1721036483080'
+      sourceHandle: source
+      target: '1721036579011'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1721036448691'
+        sourceType: llm
+        targetType: tool
+      id: 1721036579011-source-1721036611794-target
+      source: '1721036579011'
+      sourceHandle: source
+      target: '1721036611794'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1721036311433-source-llm-target
+      source: '1721036311433'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: answer
+      id: 1721036448691-source-1721036792362-target
+      source: '1721036448691'
+      sourceHandle: source
+      target: '1721036792362'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1721036448691'
+        sourceType: tool
+        targetType: llm
+      id: 1721036611794-source-1721101361457-target
+      source: '1721036611794'
+      sourceHandle: source
+      target: '1721101361457'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1721036448691'
+        sourceType: llm
+        targetType: answer
+      id: 1721101361457-source-1721036641592-target
+      source: '1721101361457'
+      sourceHandle: source
+      target: '1721036641592'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1721036391573-source-1721113344721-target
+      source: '1721036391573'
+      sourceHandle: source
+      target: '1721113344721'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: code
+      id: 1721113344721-source-1721036459061-target
+      source: '1721113344721'
+      sourceHandle: source
+      target: '1721036459061'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: "\u5F00\u59CB"
+        type: start
+        variables:
+        - label: story
+          max_length: 200
+          options: []
+          required: false
+          type: text-input
+          variable: story
+        - label: page
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: page
+      height: 116
+      id: '1721036311433'
+      position:
+        x: 78.35829619616896
+        y: 274.4942670612094
+      positionAbsolute:
+        x: 78.35829619616896
+        y: 274.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            frequency_penalty: 0.1
+            presence_penalty: 0.1
+            temperature: 0.8
+            top_p: 0.9
+          mode: chat
+          name: qwen-plus-chat
+          provider: tongyi
+        prompt_template:
+        - edition_type: basic
+          id: fbdcbefb-2be1-4383-9c39-f6c8f9991c82
+          role: system
+          text: "if ( {{#1721036311433.story#}}== null):\n\u201C\u201D\u201C\u4F60\
+            \u89D2\u8272\u626E\u6F14\u6210\u4E00\u500B\u7545\u92B7\u7684\u7AE5\u9752\
+            \u7EEA\u672C\u4F5C\u5BB6\uFF0C\u4F60\u64C5\u9577\u4EE5\u5B69\u7AE5\u7684\
+            \u7EAF\u771F\u773C\u5149\u7740\u770B\u9053\u4E16\u754C\uFF0C\u4F5C\u51FA\
+            \u8A08\u591A\u6E29\u6696\u4EBA\u5FC3\u7684\u4F5C\u54C1\uFF0C\u4EE5\u4E00\
+            \u96BD\u8207\u5BB6\u4EBA\u5931\u6563\uFF0C\u4E0D\u77E5\u9053\u81EA\u5DF1\
+            \u662F\u751A\u78E8\u7684\u5C0F\u874C\u86AA\uFF0C\u6BCF\u6B21\u770B\u5230\
+            \u8DDF\u81EA\u5DF1\u5DF2\u8EAB\u9AD4\u4E00\u90E8\u5206\u76F8\u50CF\uFF0C\
+            \u4ED6\u5C31\u5A31\u4EE5\u60F9\u662F\u540C\u985E\uFF0C\u968F\u8457\u4ED6\
+            \u8EAB\u9AD4\u9010\u6E10\u5F3A\u5C55\u51F3\u5316\uFF0C\u4ED6\u53CD\u800C\
+            \u8D8A\u6765\u8D8A\u8FF7\u8C03\uFF0C\u6545\u4E8B\u6700\u4F20\u624D\u9047\
+            \u5230\u80C3\u86D9\uFF0C\u9053\u662F\n\u500B\u6574\u81EA\u6211\u77E5\u7684\
+            \u6545\u4E8B\u3002 \u201D\u201C\u201D\nelse:\n\nnew_story =\" \u4F60\u89D2\
+            \u8272\u626E\u6F14\u6210\u4E00\u500B\u7545\u92B7\u7684\u7AE5\u9752\u7EEA\
+            \u672C\u4F5C\u5BB6\uFF0C\u4F60\u64C5\u9577\u4EE5\u5B69\u7AE5\u7684\u7EAF\
+            \u771F\u773C\u5149\u7740\u770B\u9053\u4E16\u754C\uFF0C\u4F5C\u51FA\u8A08\
+            \u591A\u6E29\u6696\u4EBA\u5FC3\u7684\u4F5C\u54C1 \"+ {{#1721036311433.story#}}\n\
+            \ print (story)"
+        selected: false
+        title: "\u4E3B\u9898"
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: llm
+      position:
+        x: 575.7588750489413
+        y: 274.4942670612094
+      positionAbsolute:
+        x: 575.7588750489413
+        y: 274.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: ''
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            frequency_penalty: 0.1
+            presence_penalty: 0.1
+            temperature: 0.8
+            top_p: 0.9
+          mode: chat
+          name: qwen-max-longcontext
+          provider: tongyi
+        prompt_template:
+        - id: 2a9a9eaf-7235-42e5-813a-61f309a0f38c
+          role: system
+          text: ''
+        - role: user
+          text: "## \u89D2\u8272\uFF1A\u6F2B\u753B\u8BBE\u8BA1\u4E13\u5BB6\n## \u6280\
+            \u80FD\uFF1A\n\u4F60\u6839\u636E\u7528\u6237\u8F93\u5165\u7684\u6587\u7AE0\
+            \u4E3B\u9898{{#llm.text#}}\uFF0C\u751F\u6210\u5404\u4E2A\u9875\u9762\u7684\
+            \u5927\u7EB2\uFF0C\u8F93\u51FAtext \u548C image_prompt\uFF0C\u8BB0\u4F4F\
+            \u4F60\u7684\u6700\u7EC8\u76EE\u6807\u662F\u9700\u8981\u751F\u6210\u6F2B\
+            \u753B\uFF0C\n\n\n\n## \u76EE\u6807\uFF1A\n- \u786E\u4FDD\u751F\u6210\u7684\
+            \u6BCF\u4E2A\u9875\u9762\u7684\u5185\u5BB9\u8282\u7D27\u5BC6\u76F8\u5173\
+            \u3002\n- \u7EB5\u89C2\u6574\u4F53\u6574\u4F53\uFF0C\u5FC5\u987B\u4FDD\
+            \u8BC1\u5404\u9875\u9762\u7684\u5185\u5BB9\u8FC7\u6E21\u8FDE\u8D2F\u6D41\
+            \u7545\u3002\n- \u6700\u7EC8\u8F93\u51FAjson\u5B57\u7B26\u4E32\uFF0C\u8BE6\
+            \u7EC6\u8BF7\u770B\u4EE5\u4E0B\u8F93\u51FA\u793A\u4F8B\u3002\n- \u6574\
+            \u4E2A\u6545\u4E8B\u5FC5\u987B\u8DCC\u5B95\u8D77\u4F0F\uFF0C30%\u7684\u9875\
+            \u9762\u8BB2\u8FF0\u5F00\u59CB\uFF0C50%\u7684\u9875\u9762\u8BB2\u8FF0\u8FC7\
+            \u7A0B\uFF0C20%\u7684\u9875\u9762\u8BB2\u7ED3\u675F\u3002\n## \u9650\u5236\
+            \uFF1A\n- \u8F93\u51FA\u7684json\u5B57\u7B26\u4E32\u5FC5\u987B\u662F\u6807\
+            \u51C6json\u5B57\u7B26\u4E32\uFF0C\u4E0D\u8981\u5305\u542B\u4EFB\u4F55\
+            XML\u6807\u7B7E\u548C\u8F6C\u4E49\u5B57\u7B26\uFF0C\u4E0D\u8981\u51FA\u73B0\
+            \\n\uFF0C`\u3002\n- \u4E25\u91CD\u6309\u7167\u8F93\u51FA\u793A\u4F8B\u4E2D\
+            \u7684\u4F8B\u5B50\u8F93\u51FAjson\u5B57\u7B26\u4E32\uFF0C\u4E0D\u8981\
+            \u8F93\u51FA\u5176\u4ED6\u4EFB\u4F55\u6587\u672C\u3002\n- \u5982\u679C\
+            {{#1721036311433.page#}}\u6709\u8F93\u5165\uFF0C\u5219\u4E25\u683C\u6309\
+            \u7167{{#1721036311433.page#}}\u7684\u9875\u9762\u8F93\u51FA\u3002\n\n\
+            - \u4E0D\u80FD\u8D85\u8FC75\u9875\u7684\u5185\u5BB9\uFF0C\u5373\u4EC5\u4EC5\
+            \u67095\u4E2A\u7AE0\u8282\n\n- \u4E25\u683C\u6309\u7167\u8F93\u51FA\u793A\
+            \u4F8B\u7684\u683C\u5F0F\u8F93\u51FA\uFF0C\u4E0D\u53EF\u4EE5\u51FA\u73B0\
+            \u4EFB\u4F55\u683C\u5F0F\u4E0A\u7684\u9519\u8BEF\n## \u8F93\u51FA\u793A\
+            \u4F8B\uFF1A\n[\n    {\n        \"page\": \"\u76AE\u8AFE\u7684\u5B64\u55AE\
+            \u751F\u6D3B\",\n        \"text\": \"\u5728\u9019\u500B\u5145\u6EFF\u5947\
+            \u5E7B\u8272\u5F69\u7684\u4E16\u754C\u88E1\uFF0C\u6211\u5011\u8B1B\u8FF0\
+            \u4E00\u500B\u5C0F\u8C6C\u7684\u6545\u4E8B\uFF0C\u5B83\u540D\u53EB\u76AE\
+            \u8AFE\u3002\u76AE\u8AFE\u662F\u4E00\u982D\u5931\u53BB\u5BB6\u4EBA\u7684\
+            \u5C0F\u8C6C\uFF0C\u56E0\u70BA\u4ED6\u5F9E\u4F86\u4E0D\u77E5\u9053\u81EA\
+            \u5DF1\u7684\u7A2E\u985E\uFF0C\u6240\u4EE5\u4ED6\u7E3D\u662F\u5C0D\u90A3\
+            \u4E9B\u548C\u4ED6\u8EAB\u9AD4\u90E8\u5206\u76F8\u4F3C\u7684\u52D5\u7269\
+            \u61F7\u8457\u83AB\u540D\u7684\u89AA\u8FD1\u611F\u3002\",\n        \"\
+            image prompt\": \"A small, lonely piglet named Pino wandering in a magical,\
+            \ colorful world\"\n    },\n    {\n        \"page\": \"\u5C0B\u627E\u540C\
+            \u985E\u7684\u76AE\u8AFE\",\n        \"text\": \"\u76AE\u8AFE\u770B\u5230\
+            \u81EA\u5DF1\u5713\u5713\u7684\u809A\u76AE\uFF0C\u4EE5\u70BA\u90A3\u662F\
+            \u4ED6\u5011\u5171\u540C\u7684\u8EAB\u4EFD\u6A19\u8A8C\uFF1B\u770B\u5230\
+            \u5927\u5927\u7684\u8033\u6735\uFF0C\u5C31\u5E7B\u60F3\u81EA\u5DF1\u662F\
+            \u8070\u660E\u7684\u807D\u8005\u3002\",\n        \"image prompt\": \"\
+            Pino the piglet looking at his round belly and big ears, imagining he\
+            \ belongs to different animal groups\"\n    },\n    {\n        \"page\"\
+            : \"\u76AE\u8AFE\u7684\u56F0\u60D1\u8207\u5B64\u55AE\",\n        \"text\"\
+            : \"\u96A8\u8457\u76AE\u8AFE\u6162\u6162\u9577\u5927\uFF0C\u4ED6\u958B\
+            \u59CB\u610F\u8B58\u5230\u81EA\u5DF1\u7684\u7368\u7279\uFF0C\u9019\u4F7F\
+            \u4ED6\u611F\u5230\u56F0\u60D1\u548C\u5B64\u55AE\u3002\u4ED6\u7684\u5C3E\
+            \u5DF4\u4E0D\u518D\u50CF\u5176\u4ED6\u8C6C\u7684\u90A3\u9EBC\u77ED\uFF0C\
+            \u8173\u8E44\u4E5F\u4E0D\u518D\u662F\u5713\u5713\u7684\uFF0C\u9019\u4E9B\
+            \u8B8A\u5316\u8B93\u4ED6\u66F4\u52A0\u8FF7\u832B\u3002\",\n        \"\
+            image prompt\": \"Growing Pino with a unique tail and non-round hooves,\
+            \ looking confused and lonely\"\n    }\n]"
+        selected: false
+        title: "\u5927\u7EB2"
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1721036391573'
+      position:
+        x: 1037.8882754554943
+        y: 274.4942670612094
+      positionAbsolute:
+        x: 1037.8882754554943
+        y: 274.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        height: 273
+        iterator_selector:
+        - '1721036459061'
+        - result
+        output_selector:
+        - '1721036611794'
+        - files
+        output_type: array[string]
+        selected: false
+        startNodeType: llm
+        start_node_id: '1721036483080'
+        title: "\u5FAA\u73AF"
+        type: iteration
+        width: 1589
+      height: 273
+      id: '1721036448691'
+      position:
+        x: 2166.77429298879
+        y: 274.4942670612094
+      positionAbsolute:
+        x: 2166.77429298879
+        y: 274.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 1589
+      zIndex: 1
+    - data:
+        code: "def main(arg2: str) -> dict:\n    import json\n    data = json.loads(arg2)\n\
+          \    \n    # Create an array of objects\n    result = [{'page': item[\"\
+          page\"], 'text': item[\"text\"], 'image_prompt': item[\"image prompt\"]}\
+          \ for item in data]\n    \n    return {\n        'result': result\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[object]
+        selected: false
+        title: "\u6539\u6210\u5B57\u5178"
+        type: code
+        variables:
+        - value_selector:
+          - '1721113344721'
+          - result
+          variable: arg2
+      height: 54
+      id: '1721036459061'
+      position:
+        x: 1821.175224514755
+        y: 274.4942670612094
+      positionAbsolute:
+        x: 1821.175224514755
+        y: 274.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        isIterationStart: true
+        iteration_id: '1721036448691'
+        model:
+          completion_params:
+            frequency_penalty: 0.1
+            presence_penalty: 0.1
+            temperature: 0.8
+            top_p: 0.9
+          mode: chat
+          name: qwen-max-longcontext
+          provider: tongyi
+        prompt_template:
+        - id: 6a675a91-64aa-4036-8b1e-9c0823207fbc
+          role: system
+          text: "\u4F60\u662F\u4E00\u4E2A\u7F8E\u5DE5\u8BBE\u8BA1\u4E13\u5BB6\uFF0C\
+            \u4ECE\u4E8B\u6F2B\u753B\u884C\u4E1A\uFF0C\u4F60\u7684\u5DE5\u4F5C\u662F\
+            \u5199\u957F\u5F62\u5F0F\u7684\u6709\u5438\u5F15\u529B\u7684\u6F2B\u753B\
+            \uFF0C\u63D0\u4F9B\u6709\u521B\u9020\u529B\u7684\u7F8E\u672F\u98CE\u683C\
+            \u5EFA\u8BAE\u3002"
+        - id: b6905f73-b97c-4e5e-9340-418f21d4e9d9
+          role: user
+          text: "\u57FA\u65BC{{#llm.text#}}\uFF0C\u6839\u636E\u4EE5\u4E0B\u4FE1\u606F\
+            \u9001\u4EE3{{#1721036448691.item#}}\u5199\u4E00\u4E2A\u7AE0\u8282\u3002\
+            \u8ACB\u601D\u8003\u5927\u65B9\u5411\u4E0A\u4F60\u60F3\u8981\u5448\u73FE\
+            \u7684\u8996\u89BA\u6548\u679C\uFF0C\u9019\u662F\u4F60\u7528\u4F86\u7D71\
+            \u4E00\u6574\u9AD4\u7E6A\u672C\u98A8\u683C\u7684\u63CF\u8FF0\uFF0C\u8ACB\
+            \u76E1\u91CF\u7CBE\u7C21\uFF0C\u4F7F\u7528\u82F1\u6587\u64B0\u5BEB\u3002"
+        selected: false
+        title: "\u7F8E\u672F\u98CE\u683C"
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      extent: parent
+      height: 98
+      id: '1721036483080'
+      parentId: '1721036448691'
+      position:
+        x: 117
+        y: 85
+      positionAbsolute:
+        x: 2283.77429298879
+        y: 359.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1001
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: "\u6362\u6210\u522B\u7684\u6A21\u578B\u4E5F\u53EF\u4EE5\uFF0C\u6709\u65F6\
+          \u5019\u8BF7\u6C42\u5931\u8D25"
+        isInIteration: true
+        iteration_id: '1721036448691'
+        model:
+          completion_params:
+            frequency_penalty: 0.1
+            presence_penalty: 0.1
+            seed: 42
+            temperature: 0.4
+            top_p: 0.9
+          mode: chat
+          name: qwen-max-longcontext
+          provider: tongyi
+        prompt_template:
+        - id: 48c5187e-4ca9-45a7-997e-575aa25c6ed5
+          role: system
+          text: ''
+        - role: user
+          text: "\u5B8C\u5584{{#1721036483080.text#}}\u7684prompt\u3002\u88DC\u5145\
+            \u8272\u8ABF\u3001\u80CC\u666F\u63CF\u8FF0\u3001\u5177\u9AD4\u98A8\u683C\
+            \u3001\u756B\u9762\u7D30\u7BC0\uFF0C\u5FC5\u9808\u5177\u9AD4\u7684\u63CF\
+            \u8FF0\uFF0C\u540C\u6642\u81F3\u5C113\u500B\u6548\u679C\u8A5E(\u5149\u7167\
+            \u6548\u679C\u3001\u8272\u5F69\u8272\u8ABF\u3001\u6E32\u67D3\u6548\u679C\
+            \u3001\u8996\u89BA\u98A8\u683C)\u548C1\u500B\u4EE5\u4E0A\u7684\u69CB\u5716\
+            \u6280\u5DE7\uFF0C\u6CE8\u610F\u7ED8\u753B\u98CE\u683C\u7684\u7EDF\u4E00\
+            \u3002\u4EE5\u69CB\u6210\u5B8C\u6574\u7684prompt\uFF0C\u8ACB\u8A2D\u5B9A\
+            \u96A8\u6A5F\u7A2E\u5B50\u503C\u70BA42\uFF0C\u4E14\u4E0D\u8981\u6709\u6587\
+            \u5B57\u51FA\u73FE\u5728\u5716\u4E2D\uFF0C{size=\"1792x1024\",n=1,prompt=final_prompt}\uFF0C\
+            \u4F7F\u7528\u82F1\u6587\u64B0\u5BEB"
+        selected: false
+        title: "\u6700\u7EC8\u63D0\u793A\u8BCD"
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      extent: parent
+      height: 128
+      id: '1721036579011'
+      parentId: '1721036448691'
+      position:
+        x: 421
+        y: 85
+      positionAbsolute:
+        x: 2587.77429298879
+        y: 359.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1721036448691'
+        provider_id: dalle
+        provider_name: dalle
+        provider_type: builtin
+        selected: false
+        title: "DALL-E 3 \u7ED8\u753B"
+        tool_configurations:
+          n: 1
+          quality: hd
+          size: horizontal
+          style: vivid
+        tool_label: "DALL-E 3 \u7ED8\u753B"
+        tool_name: dalle3
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#1721036579011.text#}}'
+        type: tool
+      extent: parent
+      height: 168
+      id: '1721036611794'
+      parentId: '1721036448691'
+      position:
+        x: 725
+        y: 85
+      positionAbsolute:
+        x: 2891.77429298879
+        y: 359.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        answer: "{{#1721036611794.files#}}\n\u5185\u5BB9\uFF1A{{#1721101361457.text#}}"
+        desc: ''
+        isInIteration: true
+        iteration_id: '1721036448691'
+        selected: false
+        title: "\u51FA\u56FE"
+        type: answer
+        variables: []
+      extent: parent
+      height: 125
+      id: '1721036641592'
+      parentId: '1721036448691'
+      position:
+        x: 1329
+        y: 85
+      positionAbsolute:
+        x: 3495.77429298879
+        y: 359.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        answer: "\u8F93\u51FA\u6240\u6709\u7ED3\u679C"
+        desc: "\u5FAA\u73AF\u5FC5\u987B\u8981\u6709\u7ED3\u679C"
+        selected: false
+        title: "\u62A5\u9519"
+        type: answer
+        variables: []
+      height: 134
+      id: '1721036792362'
+      position:
+        x: 3956.2385033286246
+        y: 274.4942670612094
+      positionAbsolute:
+        x: 3956.2385033286246
+        y: 274.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1721036448691'
+        model:
+          completion_params:
+            frequency_penalty: 0.5
+            presence_penalty: 0.5
+            temperature: 0.2
+            top_p: 0.75
+          mode: chat
+          name: qwen-max
+          provider: tongyi
+        prompt_template:
+        - id: dfe1ab4a-cfe5-4873-84f7-beff079161cd
+          role: system
+          text: ''
+        - role: user
+          text: "\u4F60\u662F\u4E00\u4E2A\u603B\u7ED3\u6587\u672C\u7684\u4E13\u5BB6\
+            \uFF0C\u5C06{{#1721036448691.item#}}\u603B\u7ED3\u6210\u4E00\u6BB5\u6587\
+            \u5B57\uFF0C\u8BED\u8A00\u98CE\u683C\u751F\u52A8\u5F62\u8C61\uFF0C\u5C3D\
+            \u91CF\u4FDD\u8BC1\u572850-100\u5B57\u4E4B\u95F4\uFF0C\u8F93\u51FA\u8BED\
+            \u8A00\u786E\u4FDD\u4E3A\u4E2D\u6587\u3002"
+        selected: false
+        title: "\u8BED\u8A00"
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      extent: parent
+      height: 98
+      id: '1721101361457'
+      parentId: '1721036448691'
+      position:
+        x: 1029
+        y: 85
+      positionAbsolute:
+        x: 3195.77429298879
+        y: 359.4942670612094
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "def main(arg1: str) -> str:\n    import json;\n\n    return {\n   \
+          \     \"result\": arg1.replace(\"```json\\n\", \"\").replace(\"\\n```\"\
+          , \"\")\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: "\u6539\u6210json\u683C\u5F0F"
+        type: code
+        variables:
+        - value_selector:
+          - '1721036391573'
+          - text
+          variable: arg1
+      height: 54
+      id: '1721113344721'
+      position:
+        x: 1483.3491269576677
+        y: 274.4942670612094
+      positionAbsolute:
+        x: 1483.3491269576677
+        y: 274.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 43.96705647121422
+      y: 151.49979313563176
+      zoom: 0.49305419942477274
