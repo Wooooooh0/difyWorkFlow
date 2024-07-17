@@ -475,7 +475,8 @@ workflow:
         - id: 48c5187e-4ca9-45a7-997e-575aa25c6ed5
           role: system
           text: ''
-        - role: user
+        - id: 66aa17ca-25cd-4cb0-be95-b363dfa12948
+          role: user
           text: "\u5B8C\u5584{{#1721036483080.text#}}\u7684prompt\u3002\u88DC\u5145\
             \u8272\u8ABF\u3001\u80CC\u666F\u63CF\u8FF0\u3001\u5177\u9AD4\u98A8\u683C\
             \u3001\u756B\u9762\u7D30\u7BC0\uFF0C\u5FC5\u9808\u5177\u9AD4\u7684\u63CF\
@@ -503,7 +504,7 @@ workflow:
       positionAbsolute:
         x: 2587.77429298879
         y: 359.4942670612094
-      selected: false
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -556,7 +557,7 @@ workflow:
         type: answer
         variables: []
       extent: parent
-      height: 125
+      height: 126
       id: '1721036641592'
       parentId: '1721036448691'
       position:
@@ -633,7 +634,7 @@ workflow:
       positionAbsolute:
         x: 3195.77429298879
         y: 359.4942670612094
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -671,6 +672,6 @@ workflow:
       type: custom
       width: 244
     viewport:
-      x: 43.96705647121422
-      y: 151.49979313563176
-      zoom: 0.49305419942477274
+      x: -1358.4825601840093
+      y: 214.50308058863698
+      zoom: 0.7473304182556497
