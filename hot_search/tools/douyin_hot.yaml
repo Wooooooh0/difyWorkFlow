@@ -1,0 +1,31 @@
+identity:
+  name: douyin_hot
+  author: Baseus
+  label:
+    en_US: check today's Douyin hot search.
+    zh_Hans: 查询今天抖音热搜
+    pt_BR: check today's Douyin hot search.
+  icon: icon.svg
+  description:
+    en_US: check today's Douyin hot search.
+    zh_Hans: 查询今天抖音热搜
+    pt_BR: check today's Douyin hot search.
+description:
+  human:
+    en_US: check today's Douyin hot search..
+    zh_Hans: 查询今天抖音热搜
+    pt_BR: check today's Douyin trending news.
+  llm: check today's Douyin hot search.
+parameters:
+
+
+
+
+
+
+
+
+
+
+
+

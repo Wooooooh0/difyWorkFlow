@@ -1,0 +1,73 @@
+identity:
+  name: baseus_audio_generation
+  author: wuminghui
+  label:
+    en_US: Baseus Audio Generation
+    zh_Hans: 文字转语音
+    pt_BR: Geração de Audio Baseus
+  icon: icon.svg
+  description:
+    en_US: Baseus Audio Generation
+    zh_Hans: base
+    pt_BR: Geração de Audio Baseus
+description:
+  human:
+    en_US: Generate audio based on user input, with image generation API
+      provided by Spark
+    zh_Hans: 根据用户的输入生成语音
+    pt_BR: Gerar imagens com base na entrada do usuário, com API de geração
+      de imagem fornecida pela baseus
+  llm: baseus_img_generation is a tool used to generate audio from text
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    label:
+      en_US: Prompt
+      zh_Hans: 提示词
+      pt_BR: Prompt
+    human_description:
+      en_US: Audio prompt
+      zh_Hans: base
+      pt_BR: Audio prompt
+    llm_description: Audio prompt of baseus_audio_generation tooll, you should
+      describe the audio you want to generate as a list of words as possible
+      as detailed
+    form: llm
+  - name: language
+    type: select
+    required: true
+    human_description:
+      en_US: selecting the audio type
+      zh_Hans: 选择输入语音类型
+      pt_BR: selecting the audio type
+    label:
+      en_US: Image Audio Type
+      zh_Hans: 输入语音类型
+      pt_BR: Image Audio Type
+    form: form
+    options:
+      - value: zh-cn
+        label:
+          en_US: Chinese
+          zh_Hans: 中文
+          pt_BR: Chinese
+      - value: en
+        label:
+          en_US: English
+          zh_Hans: 英语
+          pt_BR: English
+    default: zh-cn
+
+
+
+
+
+
+
+
+
+
+
+
+

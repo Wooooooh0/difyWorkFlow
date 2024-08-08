@@ -1,0 +1,36 @@
+identity:
+  name: baseus_newimage_generation
+  author: wuminghui
+  label:
+    en_US: Baseus new image Generation
+    zh_Hans: 旧图换新颜
+    pt_BR: Geração de new image Baseus
+  icon: icon.svg
+  description:
+    en_US: Baseus new image Generation
+    zh_Hans: base
+    pt_BR: Geração de new image Baseus
+description:
+  human:
+    en_US: Generate new image based on user input, with image generation API
+      provided by Spark
+    zh_Hans: 根据用户的旧图换新颜
+    pt_BR: Gerar imagens com base na entrada do usuário, com API de geração
+      de imagem fornecida pela baseus
+  llm: baseus_img_generation is a tool used to generate new image from text
+parameters:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

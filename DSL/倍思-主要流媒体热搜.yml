@@ -1,0 +1,112 @@
+app:
+  description: 主要流媒体热搜
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: agent-chat
+  name: 倍思-主要流媒体热搜
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    prompt: null
+    strategy: function_call
+    tools:
+    - enabled: true
+      provider_id: hot_search
+      provider_name: hot_search
+      provider_type: builtin
+      tool_label: 查询今天知乎日报
+      tool_name: zhihudaily_hot
+      tool_parameters: {}
+    - enabled: true
+      provider_id: hot_search
+      provider_name: hot_search
+      provider_type: builtin
+      tool_label: 查询今天哔哩哔哩动画热搜
+      tool_name: bilibili_hot
+      tool_parameters: {}
+    - enabled: true
+      provider_id: hot_search
+      provider_name: hot_search
+      provider_type: builtin
+      tool_label: 查询今天知乎热搜
+      tool_name: zhihu_hot
+      tool_parameters: {}
+    - enabled: true
+      provider_id: hot_search
+      provider_name: hot_search
+      provider_type: builtin
+      tool_label: 查询今天微博热搜
+      tool_name: weibo_hot
+      tool_parameters: {}
+    - enabled: true
+      provider_id: hot_search
+      provider_name: hot_search
+      provider_type: builtin
+      tool_label: 查询今天抖音热搜
+      tool_name: douyin_hot
+      tool_parameters: {}
+    - enabled: true
+      provider_id: hot_search
+      provider_name: hot_search
+      provider_type: builtin
+      tool_label: 查询今天贴吧热搜
+      tool_name: Tieba_hot
+      tool_parameters: {}
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: single
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gpt-4o-mini-2024-07-18
+    provider: openai
+  more_like_this:
+    enabled: false
+  opening_statement: '亲爱的朋友，输入您满心期待获取的平台在当天的热搜内容吧，我定会满怀热情地为您呈上最精彩相关的资讯哟！ '
+  pre_prompt: "```xml\n<instruction>\n    1. 接收用户输入的关键词 {{{platform}}，这些关键词可以来自微博、知乎、抖音、哔哩哔哩动画或贴吧。\n\
+    \    2. 根据输入的关键词调用zhihudaily_hot、zhihu_hot、bilibili_hot、weibo_hot、Tieba_hot和douyin_hot相关工具，获取相关内容。\n\
+    \    3. 将获取到的内容整理成Markdown格式，包含标题和URL。\n    4. 输出格式应为：\n       - 标题: [标题内容](URL)\n\
+    \    5. 确保输出中不包含任何XML标签。\n</instruction>\n\n<input>\n    <keyword>{{{platform}}</keyword>\n\
+    </input>\n\n<example>\n    输入平台: \"知乎\"\n    输出:\n## 今日热搜 ##\n    - 标题: [人工智能的未来](https://example.com/ai-future)\n\
+    \    - 标题: [如何学习人工智能](https://example.com/learn-ai)\n</example>\n```"
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - text-input:
+      default: ''
+      label: 平台
+      required: true
+      variable: platform
+version: 0.1.0

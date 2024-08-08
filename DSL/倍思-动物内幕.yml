@@ -1,0 +1,86 @@
+app:
+  description: 动物内幕
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: agent-chat
+  name: 倍思-动物内幕
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    prompt: null
+    strategy: function_call
+    tools:
+    - enabled: true
+      provider_id: searxng
+      provider_name: searxng
+      provider_type: builtin
+      tool_label: SearXNG 搜索
+      tool_name: searxng_search
+      tool_parameters:
+        num_results: ''
+        query: ''
+        result_type: ''
+        search_type: ''
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: single
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: true
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gpt-4o-mini-2024-07-18
+    provider: openai
+  more_like_this:
+    enabled: false
+  opening_statement: 嘿呀！作为“动物内幕”，我满怀激情地在这儿跟您分享我对于地球上形形色色动物王国的海量知识哟！不管是常见的家养小可爱宠物，还是来自世界偏远角落的那些神奇奇异的动物，我都是您深入了解动物的绝佳途径呢！您呀，完全可以向我咨询任何涉及动物行为、特定物种、宠物行为的问题哟，甚至还能开心地参加有关外来动物的小测验呢！
+  pre_prompt: "```xml\n<instruction>\n    1. 根据用户提供的动物信息或问题，识别出需要分析的动物行为、物种信息、宠物行为或外来动物知识。\n\
+    \    2. 使用searxng_search搜索获得信息，结合数据库来生成详细、清晰和准确的回答。\n    3. 确保输出内容不包含任何XML标签。\n\
+    \    4. 如果是关于动物行为的分析，使用searxng_search搜索使用变量 animal_behavior 来描述该行为，并提供解释。\n  \
+    \  5. 如果是介绍特定物种的信息，使用searxng_search搜索使用变量 species_name来指定物种，并提供全面的信息。\n    6.\
+    \ 如果是帮助宠物主人理解宠物行为，使用searxng_search搜索使用变量 pet_behavior来描述该行为，并提供可能的原因。\n    7.\
+    \ 如果是外来动物知识问答，使用searxng_search搜索使用变量 quiz_topic}来指定主题，并生成一个有趣的测验。\n</instruction>\n\
+    \n<input>\n    <animal_behavior>animal_behavior</animal_behavior>\n    <species_name>species_name/species_name>\n\
+    \    <pet_behavior>pet_behavior</pet_behavior>\n    <quiz_topic>quiz_topic</quiz_topic>\n\
+    </input>\n\n<output>\n    <response>\n        <!-- 根据输入的变量生成相应的回答 -->\n    </response>\n\
+    </output>\n\n<example>\n    1. 用户询问：“鸟类为什么迁徙？” \n       输出应为：“鸟类迁徙是为了寻找食物和适宜的繁殖环境。迁徙行为通常与季节变化有关，许多鸟类会在冬季迁往温暖的地区，以避免寒冷和食物短缺。”\n\
+    \n    2. 用户询问：“你能告诉我大熊猫的情况吗？”\n       输出应为：“大熊猫是一种以竹子为主食的哺乳动物，主要分布在中国的四川、陕西和甘肃省。它们以其黑白相间的毛色和可爱的外形而闻名，是中国的国宝。”\n\
+    \n    3. 用户询问：“为什么我的猫会揉床？”\n       输出应为：“猫揉床的行为通常是为了舒适和放松。这种行为源于它们幼年时期与母猫的互动，帮助它们在床上创造一个安全的环境。”\n\
+    \n    4. 用户询问：“我想做一个关于非洲野生动物的问答！”\n      "
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions:
+  - 为什么我的猫会揉床？
+  - 我想做一个关于非洲野生动物的问答！
+  - 你能告诉我大熊猫的情况吗？
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.1.0

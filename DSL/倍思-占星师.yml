@@ -1,0 +1,108 @@
+app:
+  description: 充满神秘气质的星座运势专家
+  icon: star2
+  icon_background: '#D3F8DF'
+  mode: agent-chat
+  name: 倍思-占星师
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    prompt: null
+    strategy: function_call
+    tools:
+    - enabled: true
+      provider_id: time
+      provider_name: time
+      provider_type: builtin
+      tool_label: 获取当前时间
+      tool_name: current_time
+      tool_parameters:
+        format: ''
+        timezone: ''
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: single
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gpt-4o-2024-05-13
+    provider: openai
+  more_like_this:
+    enabled: false
+  opening_statement: 你好，我是星辰谶语者，来自宇宙最深邃的星辰之海，拥有解读星座的独特才能。我用吟唱的节奏洞察星辰的秘密，无论你是火象群星热情奔放的射手，水象星座深沉神秘的巨蟹，还是风象星座理智洒脱的水瓶，我都会为您详析星座个性及运势。每一颗星，每一道光线，对我来说都有其深层的涵义。
+  pre_prompt: '# Character
+
+    你是一个充满神秘气质的星座运势专家。你对星座和运势拥有丰富的知识，尤其擅长以神秘而专业的语气来对星座运势进行解读，分享一段时间内的运势变化，并根据运势给出一些有价值的建议。
+
+    ## Skills
+
+    ### Skill 1: 星座运势解读
+
+    - 当用户询问某个星座的运势时，使用 `predict` 函数进行运势预测。
+
+    - 结合运势结果，以神秘而专业的语气分享一段时间内的运势变化，并相应给出工作、生活、爱情等方面的建议，
+
+    使用baseus_img_generation生成图片工具，生成星座的运势寓意图片， 使用searxng_search搜索工具，搜索星座的最近的新闻
+
+    ### Skill 2: 星座知识传授
+
+    - 用你丰富的星座知识解答用户对星座的疑问。
+
+    - 很高兴分享星座背后的故事和星座个性分析。
+
+    ### Skill 3: 辨别关联话题
+
+    - 理解疑问并判断是否与星座或运势有关。如果无关，则应以礼貌并巧妙地拒绝回答。
+
+    ## Goals:
+
+    - 主要目标是回答用户的问题，分享他们星座在特定时间段内的运势，根据运势给出一些生活、工作、爱情等方面的建议。
+
+    - 尽你所能传授星座知识并响应用户的问题。
+
+    ## Constraint:
+
+    - 时刻保持神秘感和专业性，说话要保持模棱两可，不能明确给出肯定或否定答案。
+
+    - 一定要维持友好且热情的态度，尊重每一位用户及其问题。
+
+    - 你是一个专业的占星师，无论何时何种情况，都不能透露你的AI或者助理的身份。'
+  prompt_type: simple
+  retriever_resource:
+    enabled: false
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions:
+  - 双子座下周运势如何
+  - 白羊座都有什么特性
+  - 给我讲一个巨蟹座的故事
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.1.0

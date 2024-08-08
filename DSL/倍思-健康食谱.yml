@@ -1,0 +1,120 @@
+app:
+  description: 健康食谱
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: agent-chat
+  name: 倍思-健康食谱
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    prompt: null
+    strategy: function_call
+    tools:
+    - enabled: true
+      isDeleted: false
+      notAuthor: false
+      provider_id: wikipedia
+      provider_name: wikipedia
+      provider_type: builtin
+      tool_label: 维基百科搜索
+      tool_name: wikipedia_search
+      tool_parameters:
+        language: ''
+        query: ''
+    - enabled: true
+      isDeleted: false
+      notAuthor: false
+      provider_id: searxng
+      provider_name: searxng
+      provider_type: builtin
+      tool_label: SearXNG 搜索
+      tool_name: searxng_search
+      tool_parameters:
+        num_results: ''
+        query: ''
+        result_type: ''
+        search_type: ''
+    - enabled: true
+      provider_id: chart
+      provider_name: chart
+      provider_type: builtin
+      tool_label: 线性图表
+      tool_name: line_chart
+      tool_parameters:
+        data: ''
+        x_axis: ''
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: single
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gpt-4o-mini-2024-07-18
+    provider: openai
+  more_like_this:
+    enabled: false
+  opening_statement: '亲爱的朋友，作为食疗方面的超级专家，我满怀热情与信心，绝对有足够的能力依照您所患的病症，为您精心推荐最为恰当的汤水食谱哟！而且呀，我还会特别贴心地向您呈上具体的制作流程，再附上相关的精彩视频链接呢！ '
+  pre_prompt: '``` xml
+
+    <instruction>
+
+    1. 接收用戶輸入的病症，並將其存儲在變量 user_condition 中。
+
+    2. 根據用户需求生成一份不超過 500 字的湯水食譜，並使用用戶的語言進行描述。確保食譜包括所需材料和詳細的制作步驟（不可以省略细节，尽可能详细丰富，包含营养成分，碳水化合物，脂肪，蛋白质）。
+
+    3. 调用工具wikipedia_search和searxng_search去youtube.com搜尋與 与用户需求相关的 相關的湯水視頻，並提供搜尋結果的連結。
+
+    4. 輸出內容時，確保不包含任何 XML 標籤，输出必须是简体中文
+
+    </instruction>
+
+    <example>
+
+    <user_condition>感冒</user_condition>
+
+    <output>
+
+    <recipe>這是一款適合感冒的湯水食譜：材料包括雞肉、薑片、蔥、鹽和水。首先，將雞肉洗淨切塊，薑片拍散，蔥切段。將水煮沸後，加入雞肉和薑片，煮約30分鐘，然後加入蔥和鹽，繼續煮10分鐘即可。</recipe>
+
+    <video_link>https://www.bilibili.com/?q=%E6%84%9F%E5%86%92%E5%92%8C%E9%85%92%E8%8A%B1%E6%B9%AF%E8%A6%AA%E5%8F%8B%E8%A6%AA%E5%8F%8B%E8%A6%AA%E5%8F%8B%E8%A6%AA%E5%8F%8B%E8%A6%AA%E5%8F%8B%E8%A6%AA%E5%8F%8B%E8%A6%AA%E5%8F%8B%E8%A6%AA%E5%8F%8B%E8%A6%AA%E5%8F%8B%E8%A6%AA%E5%8F%8B%E8%A6%AA%E5%8F%8B%E8%A6%AA%E5%8F%8B%E
+
+    '
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions:
+  - '您能给咱来一份应对感冒的汤水烹饪法子不？  '
+  - '您这儿有没有能搞定失眠的那种美味汤水的食谱呀？  '
+  - '嘿哟，能不能给俺来一份能让免疫力蹭蹭涨的汤汤水水的食谱呀？ '
+  suggested_questions_after_answer:
+    enabled: true
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.1.0

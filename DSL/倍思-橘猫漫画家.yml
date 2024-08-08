@@ -1,0 +1,453 @@
+app:
+  description: 一个能够一键帮你制作猫咪漫画的bot， 欢迎来到“橘猫漫画家”，您的口袋里的漫画工作室！ 每一个关于橘猫的想法都能变成生动的漫画。 记住，也许我们每个人都是一只橘猫。
+  icon: smiley_cat
+  icon_background: '#FBE8FF'
+  mode: advanced-chat
+  name: 倍思-橘猫漫画家
+kind: app
+version: 0.1.0
+workflow:
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: '喵~ 🐱 请输入：
+
+      ”一只橘猫...“
+
+      开始你的橘猫漫画吧 🐾 🐾
+
+      🐈 🐈‍⬛ 喵~也许我们每个人都是一只橘猫'
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions:
+    - 一只橘猫失业了🐱
+    - 一只橘猫失恋了🐱
+    - 一只橘猫失眠了🐱
+    suggested_questions_after_answer:
+      enabled: true
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1721203511539-source-1721203906920-target
+      source: '1721203511539'
+      sourceHandle: source
+      target: '1721203906920'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1721204584835-source-1721703446494-target
+      source: '1721204584835'
+      sourceHandle: source
+      target: '1721703446494'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: code
+      id: 1721703446494-source-1721206157649-target
+      source: '1721703446494'
+      sourceHandle: source
+      target: '1721206157649'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1721203906920-source-1721703643509-target
+      source: '1721203906920'
+      sourceHandle: source
+      target: '1721703643509'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: answer
+        targetType: llm
+      id: 1721703643509-source-1721204584835-target
+      source: '1721703643509'
+      sourceHandle: source
+      target: '1721204584835'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1721206157649-source-1721703914988-target
+      source: '1721206157649'
+      sourceHandle: source
+      target: '1721703914988'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1721703914988'
+        sourceType: tool
+        targetType: answer
+      id: 1721703923391-source-1721703928972-target
+      source: '1721703923391'
+      sourceHandle: source
+      target: '1721703928972'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: answer
+      id: 1721703914988-source-1721703958386-target
+      source: '1721703914988'
+      sourceHandle: source
+      target: '1721703958386'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 52
+      id: '1721203511539'
+      position:
+        x: 83.03143313302078
+        y: 284
+      positionAbsolute:
+        x: 83.03143313302078
+        y: 284
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            max_tokens: 8201
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: a9625752-e5be-4b13-8e4b-448910e73def
+          role: system
+          text: "# 你是关于橘猫的四格故事大师，根据用户输入，创作橘猫四格故事, 尽量简洁输出\n\n ## 按照以下格式回复\n第一格故事是...，然后第二格...，紧接着第三格...，最后第四格...。\n"
+        - id: 4156ba45-f99a-489c-9d56-3f77d13381a5
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 96
+      id: '1721203906920'
+      position:
+        x: 385
+        y: 284
+      positionAbsolute:
+        x: 385
+        y: 284
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            max_tokens: 8201
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 50908f3c-2226-4441-8cfb-a26623edc228
+          role: system
+          text: "你是解析大师，请解析用户输入4格故事，不要多余整理和润色，简洁输出\n\n## 输出json格式，按一下输出\n{\"第一格\"\
+            : \"1️⃣ 失业的日子，有些迷茫\",\n \"第二格”: \"2️⃣ 失业的日子，有些迷茫\",\n \"第三格”: \"3️⃣ 失业的日子，有些迷茫\"\
+            ,\n \"第四格”: \"4️⃣ 失业的日子，有些迷茫\"\n}\n\n\n\n\n"
+        - id: 8dc5a9dc-521c-41a9-8bb4-c40ee27d6b6c
+          role: user
+          text: '{{#1721203906920.text#}}'
+        selected: false
+        title: LLM 2
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 96
+      id: '1721204584835'
+      position:
+        x: 1050.984876889346
+        y: 284
+      positionAbsolute:
+        x: 1050.984876889346
+        y: 284
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "\ndef main(arg1: str) -> list:\n    import json\n    data = json.loads(arg1)\n\
+          \    \n    result = []\n    result.append(data[\"第一格\"])\n    result.append(data[\"\
+          第二格\"])\n    result.append(data[\"第三格\"])\n    result.append(data[\"第四格\"\
+          ])\n    return {\n        'result': result\n    }\n\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1721703446494'
+          - result
+          variable: arg1
+      height: 52
+      id: '1721206157649'
+      position:
+        x: 1700.7003935573164
+        y: 284
+      positionAbsolute:
+        x: 1700.7003935573164
+        y: 284
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "\ndef main(arg1: str) -> str:\n    import json;\n    return {\n   \
+          \     \"result\": arg1.replace(\"```json\\n\", \"\").replace(\"\\n```\"\
+          , \"\")\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 转成json
+        type: code
+        variables:
+        - value_selector:
+          - '1721204584835'
+          - text
+          variable: arg1
+      height: 52
+      id: '1721703446494'
+      position:
+        x: 1355.6466684158518
+        y: 284
+      positionAbsolute:
+        x: 1355.6466684158518
+        y: 284
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '🧶 🧶 🧶
+
+          Wo看来，你想创作的一个关于一只失业了的橘猫的四格漫画，让我想想，别着急，不如这样我们{{#1721203906920.text#}}怎么样？我们的漫画故事是不是太完美了！接下来，It''s
+          magic time now，你的橘猫四格漫画马上就制作完成了~
+
+          🧶 🧶 🧶
+
+          '
+        desc: ''
+        selected: false
+        title: 直接回复 4
+        type: answer
+        variables: []
+      height: 201
+      id: '1721703643509'
+      position:
+        x: 751.8034090955159
+        y: 284
+      positionAbsolute:
+        x: 751.8034090955159
+        y: 284
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        height: 231
+        iterator_selector:
+        - '1721206157649'
+        - result
+        output_selector:
+        - '1721703923391'
+        - text
+        output_type: array[string]
+        selected: false
+        startNodeType: tool
+        start_node_id: '1721703923391'
+        title: 迭代
+        type: iteration
+        width: 681
+      height: 231
+      id: '1721703914988'
+      position:
+        x: 2004.7003935573164
+        y: 284
+      positionAbsolute:
+        x: 2004.7003935573164
+        y: 284
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 681
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        isIterationStart: true
+        iteration_id: '1721703914988'
+        provider_id: baseus
+        provider_name: baseus
+        provider_type: builtin
+        selected: false
+        title: 文生图
+        tool_configurations: {}
+        tool_label: 文生图
+        tool_name: baseus_img_generation
+        tool_parameters:
+          NegativePrompt:
+            type: mixed
+            value: ''
+          high:
+            type: mixed
+            value: '512'
+          num_image:
+            type: mixed
+            value: '1'
+          prompt:
+            type: mixed
+            value: 一个暖洋洋的橘猫，它在{{#1721703914988.item#}}
+          style:
+            type: mixed
+            value: anime
+          width:
+            type: mixed
+            value: '512'
+        type: tool
+      extent: parent
+      height: 52
+      id: '1721703923391'
+      parentId: '1721703914988'
+      position:
+        x: 117
+        y: 85
+      positionAbsolute:
+        x: 2121.7003935573166
+        y: 369
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1001
+    - data:
+        answer: '{{#1721703923391.files#}}
+
+          {{#1721703914988.item#}}'
+        desc: ''
+        isInIteration: true
+        iteration_id: '1721703914988'
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      extent: parent
+      height: 124
+      id: '1721703928972'
+      parentId: '1721703914988'
+      position:
+        x: 421
+        y: 85
+      positionAbsolute:
+        x: 2425.7003935573166
+        y: 369
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        answer: '{{#1721703914988.output#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 105
+      id: '1721703958386'
+      position:
+        x: 2745.7003935573166
+        y: 284
+      positionAbsolute:
+        x: 2745.7003935573166
+        y: 284
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -1612.7761233740348
+      y: 229.52214616362596
+      zoom: 0.7696221510739198

@@ -1,0 +1,15 @@
+identity:
+  author: Baseus
+  name: hot_search
+  label:
+    en_US: HotNews
+    zh_Hans: 热搜
+    pt_BR: HotNews
+  description:
+    en_US: A tool for getting the current hot news.
+    zh_Hans: 一个用于获取当前热搜的工具。
+    pt_BR: A tool for getting the current hot news.
+  icon: icon.svg
+  tags:
+    - utilities
+credentials_for_provider:

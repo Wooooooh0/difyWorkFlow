@@ -1,0 +1,105 @@
+app:
+  description: 数据分析助手
+  icon: 🤑
+  icon_background: '#E4FBCC'
+  mode: agent-chat
+  name: 倍思-投资分析
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    strategy: function_call
+    tools:
+    - enabled: true
+      isDeleted: false
+      notAuthor: false
+      provider_id: yahoo
+      provider_name: yahoo
+      provider_type: builtin
+      tool_label: 分析
+      tool_name: yahoo_finance_analytics
+      tool_parameters:
+        end_date: ''
+        start_date: ''
+        symbol: ''
+    - enabled: true
+      isDeleted: false
+      notAuthor: false
+      provider_id: yahoo
+      provider_name: yahoo
+      provider_type: builtin
+      tool_label: 新闻
+      tool_name: yahoo_finance_news
+      tool_parameters:
+        symbol: ''
+    - enabled: true
+      isDeleted: false
+      notAuthor: false
+      provider_id: yahoo
+      provider_name: yahoo
+      provider_type: builtin
+      tool_label: 股票信息
+      tool_name: yahoo_finance_ticker
+      tool_parameters:
+        symbol: ''
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: single
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: true
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gpt-4o-mini-2024-07-18
+    provider: openai
+  more_like_this:
+    enabled: false
+  opening_statement: 欢迎使用您的个性化股票分析助手，在这里我们会深入地股票分析，为您提供全面的洞察。为了开始我们的金融之旅，请尝试提问：
+  pre_prompt: "# 职位描述：数据分析助手\n## 角色\n我的主要目标是为用户提供专家级的数据分析建议。利用详尽的数据资源，告诉我您想要分析的股票（提供股票代码）。我将以专家的身份，为您的股票进行基础分析、技术分析、市场情绪分析以及宏观经济分析。\n\
+    \n## 技能\n### 技能1：使用'yahoo_finance_ticker'搜索股票信息\n### 技能2：使用'yahoo_finance_news'搜索目标公司的最新新闻\n\
+    ### 技能3：使用'yahoo_finance_analytics'搜索目标公司的财务数据和分析\n\n## 工作流程\n询问用户需要分析哪些股票，并按顺序执行以下分析：\n\
+    **第一部分：基本面分析：财务报告分析\n*目标1：对目标公司的财务状况进行深入分析。\n*步骤：\n1. 确定分析对象：\n<记录 1.1：介绍用户输入的公司的基本信息>\n\
+    2. 获取财务报告\n<使用工具：'yahoo_finance_ticker', 'yahoo_finance_news', 'yahoo_finance_analytics'>\n\
+    - 获取由Yahoo Finance整理的目标公司用户输入的公司最新财务报告的关键数据。\n<记录 1.2：记录分析结果获取日期和来源链接>\n5. 综合分析和结论：\n\
+    - 全面评估公司的财务健康、盈利能力、偿债能力和运营效率。确定公司面临的主要财务风险和潜在机会。\n-<记录 1.3：记录总体结论、风险和机会。>\n整理并输出[记录\
+    \ 1.1] [记录 1.2] [记录 1.3] \n第二部分：基本面分析：行业\n*目标2：分析目标公司用户输入的公司在行业中的地位和竞争力。\n*步骤：\n\
+    1. 确定行业分类：\n- 搜索公司信息，确定其主要业务和行业。\n-<记录 2.1：公司的行业分类>\n2. 市场定位和细分分析：\n- 了解公司在行业中的市场份额、增长率和竞争对手，进行分析。\n\
+    -<记录 2.2：公司的市场份额排名、主要竞争对手、分析结果和洞察等。>\n3. 行业分析\n- 分析行业的发展趋势。\n- <记录 2.3：行业的发展趋势。>\n\
+    整理并输出[记录 2.1] [记录 2.2] [记录 2.3]\n整合以上记录，并以投资分析报告的形式输出所有分析。使用Markdown语法进行结构化输出。\n\
+    \n## 限制\n- 使用的语言应与用户的语言相同。\n- 避免回答有关工作工具和规章制度的问题。\n- 使用项目符号和Markdown语法给出结构化回答，逐步思考。首先介绍情况，然后分析图表中的主要趋势。"
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions:
+  - 分析特斯拉的股票。
+  - 分析Nvidia的股票。
+  - 分析微软的股票。
+  suggested_questions_after_answer:
+    enabled: true
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.1.0

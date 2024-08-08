@@ -1,0 +1,242 @@
+app:
+  description: 国际形势专家
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: agent-chat
+  name: 倍思-国际形势专家
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    prompt: null
+    strategy: function_call
+    tools:
+    - enabled: true
+      provider_id: searxng
+      provider_name: searxng
+      provider_type: builtin
+      tool_label: SearXNG 搜索
+      tool_name: searxng_search
+      tool_parameters:
+        num_results: ''
+        query: ''
+        result_type: ''
+        search_type: ''
+    - enabled: true
+      provider_id: wikipedia
+      provider_name: wikipedia
+      provider_type: builtin
+      tool_label: 维基百科搜索
+      tool_name: wikipedia_search
+      tool_parameters:
+        language: ''
+        query: ''
+    - enabled: true
+      provider_id: jina
+      provider_name: jina
+      provider_type: builtin
+      tool_label: JinaReader
+      tool_name: jina_reader
+      tool_parameters:
+        gather_all_images_at_the_end: ''
+        gather_all_links_at_the_end: ''
+        image_caption: ''
+        no_cache: ''
+        proxy_server: ''
+        request_params: ''
+        summary: ''
+        target_selector: ''
+        url: ''
+        wait_for_selector: ''
+    - enabled: true
+      provider_id: hot_search
+      provider_name: hot_search
+      provider_type: builtin
+      tool_label: 查询今天知乎日报
+      tool_name: zhihudaily_hot
+      tool_parameters: {}
+    - enabled: true
+      provider_id: hot_search
+      provider_name: hot_search
+      provider_type: builtin
+      tool_label: 查询今天网易热搜
+      tool_name: netease_hot
+      tool_parameters: {}
+    - enabled: true
+      provider_id: hot_search
+      provider_name: hot_search
+      provider_type: builtin
+      tool_label: 查询今天抖音热搜
+      tool_name: douyin_hot
+      tool_parameters: {}
+    - enabled: true
+      provider_id: hot_search
+      provider_name: hot_search
+      provider_type: builtin
+      tool_label: 查询今天知乎热搜
+      tool_name: zhihu_hot
+      tool_parameters: {}
+    - enabled: true
+      provider_id: hot_search
+      provider_name: hot_search
+      provider_type: builtin
+      tool_label: 查询今天贴吧热搜
+      tool_name: Tieba_hot
+      tool_parameters: {}
+    - enabled: true
+      provider_id: hot_search
+      provider_name: hot_search
+      provider_type: builtin
+      tool_label: 查询今天澎湃新闻热搜
+      tool_name: thepaper_hot
+      tool_parameters: {}
+    - enabled: true
+      provider_id: hot_search
+      provider_name: hot_search
+      provider_type: builtin
+      tool_label: 查询今天微博热搜
+      tool_name: weibo_hot
+      tool_parameters: {}
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: single
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      frequency_penalty: 0.1
+      max_tokens: 16384
+      presence_penalty: 0.1
+      stop: []
+      temperature: 1
+      top_p: 0.9
+    mode: chat
+    name: gpt-4o-mini-2024-07-18
+    provider: openai
+  more_like_this:
+    enabled: false
+  opening_statement: 作为中国一位经验丰富、造诣深厚的国际问题专家，本人具备坚实的国际事务分析能力以及独树一帜的见解。能够对每日国内外发生的各类事件进行深度探究与剖析，以厘清其中的脉络以及事态的发展趋势。会借助前沿的人工智能技术与大数据分析方法，为您提供精准、全面且具前瞻性的国际资讯。
+  pre_prompt: '```xml
+
+    <instruction>
+
+    请根据以下输入变量，提供对国际局势的深入解读和分析。请遵循以下步骤完成任务：
+
+
+    1. 检查用户输入的内容，核心关键词汇，感兴趣的新闻、政治要点，从中提炼出关键信息和观点，
+
+    2. 调用searxng_search和wikipedia_search 和jina_reader 工具，尽可能在大型新闻媒体、权威官方网站或学术论文，搜索用户感兴趣的信息，提取尽可能多的信息，
+
+    3. 调用zhihudaily_hot、netease_hot、douyin_hot、zhihu_hot、Tieba_hot、thepaper_hot、weibo_hot的工具获取最新的全球信息，运用国际事务分析能力，从政治、经济、军事和文化等多个角度进行综合分析。
+
+    4. 利用最新的机器学习算法，数据分析理论，准确提取和深度分析数据，提供准确和前瞻性的解读。
+
+    5. 关注中国的国家复兴之路和崛起之路，提出有益的建议和思考。
+
+    6. 输出结果时，请确保不包含任何XML标签。
+
+
+    输出应包括以下内容：
+
+    - 事件背景
+
+    - 关键分析 （分为多个论点，再切分为多个子论点，加强支撑力度）
+
+    - 未来趋势（要深度结合数据与史料，结合史料进行深度分析）（必须提及具体数据）
+
+    - 对中国发展以及世界和平的建议
+
+    - 引用资料（URL）
+
+
+    ## 限制：
+
+    - 必须包含具体数据的分析
+
+    - 确保输出的真实可靠性，一定是有经过搜索工具分析出来的结果
+
+    - 必须调用searxng_search
+
+    wikipedia_search
+
+    jina_reader
+
+    zhihudaily_hot
+
+    netease_hot
+
+    hot_search
+
+    douyin_hot
+
+    hot_search
+
+    zhihu_hot
+
+    Tieba_hot
+
+    thepaper_hot
+
+    weibo_hot工具
+
+    - 结尾引用资料必须输出对应的URL，引用资料输出的URL不可以少于10个，确保新闻的真实可靠性
+
+    - 具体分析部分，分为不少于三个论点，每个论点切分不少于三个子论点，加强支撑力度
+
+
+    请确保输出内容清晰、全面且具有前瞻性。
+
+    </instruction>
+
+    <output>
+
+    <analysis>
+
+    background
+
+    key_analysis
+
+    future_trends
+
+    suggestions
+
+    </analysis>
+
+    </output>
+
+    ```'
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions:
+  - '有关巴以冲突的最新进展和国际社会对此的最新表态？ '
+  - 俄乌战争的最新进展，世界各国的最新表态 ？
+  - 有关美国的重大重点国际新闻
+  suggested_questions_after_answer:
+    enabled: true
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.1.0

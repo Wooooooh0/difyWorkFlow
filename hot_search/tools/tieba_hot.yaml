@@ -1,0 +1,31 @@
+identity:
+  name: Tieba_hot
+  author: Baseus
+  label:
+    en_US: check today's Tieba hot search.
+    zh_Hans: 查询今天贴吧热搜
+    pt_BR: check today's Tieba hot search.
+  icon: icon.svg
+  description:
+    en_US: check today's Tieba hot search.
+    zh_Hans: 查询今天贴吧热搜
+    pt_BR: check today's Tieba hot search.
+description:
+  human:
+    en_US: check today's Tieba hot search.
+    zh_Hans: 查询今天贴吧热搜
+    pt_BR: check today's Tieba hot search.
+  llm: check today's Tieba hot search.
+parameters:
+
+
+
+
+
+
+
+
+
+
+
+

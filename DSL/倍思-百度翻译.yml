@@ -1,0 +1,164 @@
+app:
+  description: 基于百度
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 倍思-百度翻译
+kind: app
+version: 0.1.0
+workflow:
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: tool
+      id: 1722405935749-source-1722405961465-target
+      source: '1722405935749'
+      sourceHandle: source
+      target: '1722405961465'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: end
+      id: 1722405961465-source-1722405967820-target
+      source: '1722405961465'
+      sourceHandle: source
+      target: '1722405967820'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: text
+          max_length: 60000
+          options: []
+          required: true
+          type: paragraph
+          variable: text
+        - label: language
+          max_length: 48
+          options:
+          - 英语
+          - 中文
+          - 日语
+          - 韩语
+          - 泰语
+          - 俄语
+          - 西班牙语
+          - 法语
+          - 荷兰语
+          - 德语
+          - 阿拉伯语
+          - 意大利语
+          - 丹麦语
+          - 葡萄牙语
+          - 粤语
+          - 繁体中文
+          - 越南语
+          - 波兰语
+          required: true
+          type: select
+          variable: language
+      height: 116
+      id: '1722405935749'
+      position:
+        x: 81
+        y: 280
+      positionAbsolute:
+        x: 81
+        y: 280
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: baseus
+        provider_name: baseus
+        provider_type: builtin
+        selected: false
+        title: 百度翻译
+        tool_configurations: {}
+        tool_label: 百度翻译
+        tool_name: translate
+        tool_parameters:
+          lang:
+            type: mixed
+            value: '{{#1722405935749.language#}}'
+          text:
+            type: mixed
+            value: '{{#1722405935749.text#}}'
+        type: tool
+      height: 54
+      id: '1722405961465'
+      position:
+        x: 383
+        y: 280
+      positionAbsolute:
+        x: 383
+        y: 280
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1722405961465'
+          - text
+          variable: text
+        selected: true
+        title: 结束
+        type: end
+      height: 90
+      id: '1722405967820'
+      position:
+        x: 684
+        y: 280
+      positionAbsolute:
+        x: 684
+        y: 280
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 151
+      y: 57
+      zoom: 1

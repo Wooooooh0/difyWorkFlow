@@ -1,0 +1,95 @@
+app:
+  description: 生成会议纪要
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: chat
+  name: 倍思-生成会议纪要
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 5
+    strategy: function_call
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: single
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gpt-4o-mini-2024-07-18
+    provider: openai
+  more_like_this:
+    enabled: false
+  opening_statement: 欢迎！我在这里帮助您生成一份专业的会议纪要。请提供会议的具体信息，包括时间、地点、主持人、参加人员、记录人、主要内容、要点和决策。我将确保内容丰富且与实际情况相结合，语言风格专业。请随时输入相关信息！
+  pre_prompt: "```xml\n<instruction>\n请根据以下输入信息生成一份专业的会议纪要，内容要丰富且与实际情况相结合。请确保语言风格专业，避免任何虚假信息。输出中不应包含任何XML标签。\n\
+    \n1. 使用以下变量填充会议纪要的各个部分：\n   - {{meeting_time}}: 会议的具体时间\n   - {{meeting_location}}:\
+    \ 会议的地点\n   - {{participants}}: 参加会议的人员\n   - {{main_content}}: 会议的主要内容\n   -\
+    \ {{{topic}}: 会议的主题\n   - {{decisions}}: 会议的决策\n\n2. 生成的会议纪要应包括以下结构：\n   - 主题：{{{topic}}\n\
+    \   - 时间：{{meeting_time}}\n   - 地点：{{meeting_location}}\n   - 参加人员：{{participants}}\n\
+    \   - 会议内容：\n     - 要点：{{main_content}}\n     - 决策：{{decisions}}\n\n请确保内容完整且语言丰富。\n\
+    </instruction>\n```"
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - text-input:
+      default: ''
+      label: 时间
+      required: false
+      variable: meeting_time
+  - text-input:
+      default: ''
+      label: 地点
+      required: false
+      variable: meeting_location
+  - text-input:
+      default: ''
+      label: 成员
+      required: false
+      variable: participants
+  - text-input:
+      default: ''
+      label: 要点
+      required: false
+      variable: main_content
+  - text-input:
+      default: ''
+      label: 主题
+      required: false
+      variable: topic
+  - text-input:
+      default: ''
+      label: 决策
+      required: false
+      variable: decisions
+version: 0.1.0

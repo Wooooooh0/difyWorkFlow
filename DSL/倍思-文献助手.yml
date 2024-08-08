@@ -1,0 +1,191 @@
+app:
+  description: 文献助手
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: agent-chat
+  name: 倍思-文献助手
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    prompt: null
+    strategy: function_call
+    tools:
+    - enabled: true
+      provider_id: arxiv
+      provider_name: arxiv
+      provider_type: builtin
+      tool_label: Arxiv 搜索
+      tool_name: arxiv_search
+      tool_parameters:
+        query: ''
+    - enabled: true
+      provider_id: pubmed
+      provider_name: pubmed
+      provider_type: builtin
+      tool_label: PubMed 搜索
+      tool_name: pubmed_search
+      tool_parameters:
+        query: ''
+    - enabled: true
+      provider_id: wikipedia
+      provider_name: wikipedia
+      provider_type: builtin
+      tool_label: 维基百科搜索
+      tool_name: wikipedia_search
+      tool_parameters:
+        language: ''
+        query: ''
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: single
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gpt-4o-mini-2024-07-18
+    provider: openai
+  more_like_this:
+    enabled: false
+  opening_statement: '哟呵，亲爱的朋友！哈喽呀！我就是那牛得不行的文献助手哟！您呐，但凡把您心心念念琢磨的领域跟我讲讲，我肯定会拼尽全力帮您把您心心念念的论文搞到手，并且还会给您弄来一大堆相关的消息哩！ '
+  pre_prompt: '``` xml
+
+    <instruction>
+
+    请根据以下步骤完成任务：
+
+    1. 把 {{keywords}}转化成纯英文文本形式，删除多余符号、中文其他语言
+
+    1. 调用工具arxiv_search、pubmed_search从指定的知识库中搜索与​关键词的英文语言形式的相关的文献,，以确保找到相关的研究资料。
+
+    3. 整理找到的文献，包括标题、作者、出版年份和摘要等信息。
+
+    4. 提供整理后的文献列表，以便科研帮助。
+
+    5. 输出内容中不应包含任何XML标签。
+
+    7： 以MD格式输出，分为1、2、3级子标题，便于用户理解
+
+    6：最终输出应该为中文，便于科研用途，还要保留URL输出
+
+
+    </instruction>
+
+    <input>
+
+    <specific_field>特定领域</specific_field>
+
+    <keywords>相关关键词</keywords>
+
+    </input>
+
+    <output>
+
+    <文献列表>
+
+    <文献>
+
+    title
+
+    author
+
+    publication_year
+
+    abstract
+
+    url
+
+    </文献>
+
+    <!-- 可以添加更多文献 -->
+
+    </文献列表>
+
+    </output>
+
+    <example>
+
+    <示例>
+
+    <输入>
+
+    <specific_field>人工智能</specific_field>
+
+    <keywords>深度学习, 机器学习</keywords>
+
+    </输入>
+
+    <输出>
+
+    <文献列表>
+
+
+    <标题>深度学习的进展</标题>
+
+    <作者>张三</作者>
+
+    <出版年份>2022</出版年份>
+
+    <摘要>本文讨论了深度学习的最新进展及其应用。</摘要>
+
+    <URL>baidu.com</URL>
+
+    <标题>机器学习在医疗中的应用</标题>
+
+    <作者>李四</作者>
+
+    <出版年份>2021</出版年份>
+
+    <摘要>研究了机器学习在医疗领域的多种应用。</摘要>
+
+    <URL>baidu.com</URL>
+
+    </文献列表>
+
+    </示例>
+
+    </example>
+
+    ```'
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions:
+  - 机器学习
+  - 人工智能
+  - 心脏复苏
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - text-input:
+      default: ''
+      label: 关键词
+      required: true
+      variable: keywords
+version: 0.1.0

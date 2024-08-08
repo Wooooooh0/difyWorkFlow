@@ -1,0 +1,31 @@
+identity:
+  name: genshin_hot
+  author: Baseus
+  label:
+    en_US: check today's Genshin hot search.
+    zh_Hans: 查询今天原神热搜
+    pt_BR: check today's Genshin hot search.
+  icon: icon.svg
+  description:
+    en_US: check today's Genshin hot search.
+    zh_Hans: 查询今天原神热搜
+    pt_BR: check today's Genshin hot search.
+description:
+  human:
+    en_US: check today's Genshin hot search..
+    zh_Hans: 查询今天原神热搜
+    pt_BR: check today's Genshin trending news.
+  llm: check today's Genshin hot search.
+parameters:
+
+
+
+
+
+
+
+
+
+
+
+

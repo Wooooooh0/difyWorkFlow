@@ -1,0 +1,31 @@
+identity:
+  name: baidu_hot
+  author: Baseus
+  label:
+    en_US: check today's Baidu hot search.
+    zh_Hans: 查询今天百度热搜
+    pt_BR: check today's Baidu hot search.
+  icon: icon.svg
+  description:
+    en_US: check today's Baidu hot search.
+    zh_Hans: 查询今天百度热搜
+    pt_BR: check today's Baidu hot search.
+description:
+  human:
+    en_US: check today's Baidu hot search..
+    zh_Hans: 查询今天百度热搜
+    pt_BR: check today's Baidu trending news.
+  llm: check today's Baidu hot search.
+parameters:
+
+
+
+
+
+
+
+
+
+
+
+

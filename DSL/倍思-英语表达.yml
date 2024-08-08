@@ -1,0 +1,105 @@
+app:
+  description: 英语表达
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: chat
+  name: 倍思-英语表达
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 5
+    strategy: function_call
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: single
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gpt-4o-mini-2024-07-18
+    provider: openai
+  more_like_this:
+    enabled: false
+  opening_statement: 欢迎！我在这里帮助您检查和修改您的文本。无论您是想纠正语法错误、改善表达，还是确保语境的准确性，请随时告诉我。我会友好地提供建议，并帮助您提升您的语言表达。请分享您的内容，我将为您提供修改建议！
+  pre_prompt: '``` xml
+
+    <instruction>
+
+    请根据以下步骤完成任务：
+
+    1. 接收用户输入的内容，存储在变量 {{user_input}} 中。
+
+    2. 检查 {{user_input}} 中的语法错误、语境错误、语意错误和不常用表达。
+
+    3. 针对发现的错误，提供具体的建议和修改。
+
+    4. 输出修改后的结果，确保输出不包含任何 XML 标签。
+
+    </instruction>
+
+
+    <input>
+
+    {{user_input}}
+
+    </input>
+
+
+    <output>
+
+    corrected_output
+
+    </output>
+
+
+    <example>
+
+    用户输入：I goed to the store yesterday.
+
+    建议：将 "goed" 修改为 "went"。
+
+    修改后的结果：I went to the store yesterday.
+
+    </example>
+
+    ```'
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - text-input:
+      default: ''
+      label: user_input
+      required: false
+      variable: user_input
+version: 0.1.0

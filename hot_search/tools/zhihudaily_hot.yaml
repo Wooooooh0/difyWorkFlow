@@ -1,0 +1,31 @@
+identity:
+  name: zhihudaily_hot
+  author: Baseus
+  label:
+    en_US: check today's Zhihu Daily News search.
+    zh_Hans: 查询今天知乎日报
+    pt_BR: check today's Zhihu Daily News search.
+  icon: icon.svg
+  description:
+    en_US: check today's Zhihu Daily News search.
+    zh_Hans: 查询今天知乎日报
+    pt_BR: check today's Zhihu Daily News search.
+description:
+  human:
+    en_US: check today's Zhihu Daily News search.
+    zh_Hans: 查询今天知乎日报
+    pt_BR: check today's Zhihu Daily News search.
+  llm: check today's Zhihu Daily News search.
+parameters:
+
+
+
+
+
+
+
+
+
+
+
+

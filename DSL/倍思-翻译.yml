@@ -1,0 +1,552 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 倍思-翻译
+kind: app
+version: 0.1.0
+workflow:
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: if-else
+      id: 1722569329893-source-1722569351506-target
+      source: '1722569329893'
+      sourceHandle: source
+      target: '1722569351506'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1722569351506-7e716bd3-2f8f-42a1-9808-2aacd5398f27-llm-target
+      source: '1722569351506'
+      sourceHandle: 7e716bd3-2f8f-42a1-9808-2aacd5398f27
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: tool
+      id: 1722569351506-true-1722569485178-target
+      source: '1722569351506'
+      sourceHandle: 'true'
+      target: '1722569485178'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: answer
+      id: 1722569485178-source-1722569493936-target
+      source: '1722569485178'
+      sourceHandle: source
+      target: '1722569493936'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: llm-source-1722570511253-target
+      source: llm
+      sourceHandle: source
+      target: '1722570511253'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1722570511253-source-1722570516204-target
+      source: '1722570511253'
+      sourceHandle: source
+      target: '1722570516204'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1722570516204-source-1722570550586-target
+      source: '1722570516204'
+      sourceHandle: source
+      target: '1722570550586'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: tool
+      id: 1722569351506-bff8bd5e-ccd3-4166-85f9-635b43e0af68-1722824310637-target
+      source: '1722569351506'
+      sourceHandle: bff8bd5e-ccd3-4166-85f9-635b43e0af68
+      target: '1722824310637'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1722569351506-false-1722824315775-target
+      source: '1722569351506'
+      sourceHandle: 'false'
+      target: '1722824315775'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 选择翻译引擎
+          max_length: 48
+          options:
+          - 百度翻译
+          - 大模型翻译
+          required: true
+          type: select
+          variable: capacity
+        - label: 翻译语言
+          max_length: 48
+          options:
+          - 英语
+          - 中文
+          - 日语
+          - 韩语
+          - 泰语
+          - 俄语
+          - 西班牙语
+          - 法语
+          - 荷兰语
+          - 德语
+          - 阿拉伯语
+          - 意大利语
+          - 丹麦语
+          - 葡萄牙语
+          - 粤语
+          - 繁体中文
+          - 越南语
+          - 波兰语
+          required: true
+          type: select
+          variable: lang
+        - label: 风格
+          max_length: 48
+          options:
+          - 中国
+          - 日本
+          - 韩国
+          - 美国
+          - 俄国
+          - 德国
+          - 波兰
+          - 西班牙
+          - 葡萄牙
+          - 阿拉伯
+          - 法国
+          - 泰国
+          - 荷兰
+          - 越南
+          required: false
+          type: select
+          variable: style
+      height: 142
+      id: '1722569329893'
+      position:
+        x: -132
+        y: 536
+      positionAbsolute:
+        x: -132
+        y: 536
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: fbbe33db-2421-43b0-a966-78c63ce3025f
+          role: system
+          text: You are an expert linguist, specializing in translation from  中国 to
+            {{#1722569329893.lang#}}
+        - id: fd1c06cd-5377-42da-99e9-e3efd79d7d14
+          role: user
+          text: 'This is an User input  to {{#1722569329893.lang#}} translation, please
+            provide the {{#1722569329893.lang#}}translation for this text.
+
+
+
+            Do not provide any explanations or text apart from the translation.
+
+            中国: {{#sys.query#}}
+
+            {{#1722569329893.lang#}}:'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: llm
+      position:
+        x: 625
+        y: 631
+      positionAbsolute:
+        x: 625
+        y: 631
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 6ad31557-761f-4aa4-8d56-a81217f22cde
+            value: 百度翻译
+            varType: string
+            variable_selector:
+            - '1722569329893'
+            - capacity
+          id: 'true'
+          logical_operator: and
+        - case_id: 7e716bd3-2f8f-42a1-9808-2aacd5398f27
+          conditions:
+          - comparison_operator: contains
+            id: c67aa5eb-0e1d-48f9-89ef-d85f3ca20f97
+            value: 大模型翻译
+            varType: string
+            variable_selector:
+            - '1722569329893'
+            - capacity
+          id: 7e716bd3-2f8f-42a1-9808-2aacd5398f27
+          logical_operator: and
+        - case_id: bff8bd5e-ccd3-4166-85f9-635b43e0af68
+          conditions:
+          - comparison_operator: contains
+            id: d50d0163-b0cf-48a2-8508-ae8472e396a2
+            value: 谷歌翻译
+            varType: string
+            variable_selector:
+            - '1722569329893'
+            - capacity
+          id: bff8bd5e-ccd3-4166-85f9-635b43e0af68
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 222
+      id: '1722569351506'
+      position:
+        x: 241
+        y: 536
+      positionAbsolute:
+        x: 241
+        y: 536
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: baseus
+        provider_name: baseus
+        provider_type: builtin
+        selected: false
+        title: 百度翻译
+        tool_configurations: {}
+        tool_label: 百度翻译
+        tool_name: translate
+        tool_parameters:
+          lang:
+            type: mixed
+            value: '{{#1722569329893.lang#}}'
+          text:
+            type: mixed
+            value: '{{#sys.query#}}'
+        type: tool
+      height: 54
+      id: '1722569485178'
+      position:
+        x: 625
+        y: 512
+      positionAbsolute:
+        x: 625
+        y: 512
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1722569485178.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 107
+      id: '1722569493936'
+      position:
+        x: 957
+        y: 512
+      positionAbsolute:
+        x: 957
+        y: 512
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: e0bce9ef-89dd-422a-8f99-af34d3450880
+          role: system
+          text: You are an expert linguist specializing in translation from 中国 to
+            {{#1722569329893.lang#}}You will be provided with a source text and its
+            translation and your goal is to improve the translation.
+        - id: f05470c0-91fc-4578-9ac2-81fd00526cc9
+          role: user
+          text: "Your task is to carefully read a source text and a translation from\
+            \ 中国 to {{#1722569329893.lang#}}, and then give constructive criticism\
+            \ and helpful suggestions to improve the translation. \n\n\nThe final\
+            \ style and tone of the translation should match the style of {{#1722569329893.lang#}}\
+            \ colloquially spoken in {{#1722569329893.style#}}.\n\nThe source text\
+            \ and initial translation, delimited by XML tags <SOURCE_TEXT></SOURCE_TEXT>\
+            \ and <TRANSLATION></TRANSLATION>, are as follows:\n\n<SOURCE_TEXT>\n\
+            {{#sys.query#}}\n</SOURCE_TEXT>\n\n<TRANSLATION>\n{{#sys.query#}}\n</TRANSLATION>\n\
+            \nWhen writing suggestions, pay attention to whether there are ways to\
+            \ improve the translation's \n(i) accuracy (by correcting errors of addition,\
+            \ mistranslation, omission, or untranslated text),\n(ii) fluency (by applying\
+            \ {{#1722569329893.lang#}}grammar, spelling and punctuation rules, and\
+            \ ensuring there are no unnecessary repetitions),\n\n\n(iii) style (by\
+            \ ensuring the translations reflect the style of the source text and take\
+            \ into account any cultural context),\n(iv) terminology (by ensuring terminology\
+            \ use is consistent and reflects the source text domain; and by only ensuring\
+            \ you use equivalent idioms {{#1722569329893.lang#}}).\n\n\nWrite a list\
+            \ of specific, helpful and constructive suggestions for improving the\
+            \ translation.\nEach suggestion should address one specific part of the\
+            \ translation.\nOutput only the suggestions and nothing else."
+        selected: false
+        title: LLM 2
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1722570511253'
+      position:
+        x: 957
+        y: 631
+      positionAbsolute:
+        x: 957
+        y: 631
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: b69f1146-a2d7-4f19-a1e7-19e18af57370
+          role: system
+          text: You are an expert linguist, specializing in translation editing from
+            中国 to {{#1722569329893.lang#}}
+        - id: 507b0923-abc7-494f-baec-f68ccdcc5073
+          role: user
+          text: "Your task is to carefully read, then edit, a translation from 中国\
+            \ to {{#1722569329893.lang#}}, taking into\naccount a list of expert suggestions\
+            \ and constructive criticisms.\n\nThe source text, the initial translation,\
+            \ and the expert linguist suggestions are delimited by XML tags <SOURCE_TEXT></SOURCE_TEXT>,\
+            \ <TRANSLATION></TRANSLATION> and <EXPERT_SUGGESTIONS></EXPERT_SUGGESTIONS>\
+            \ \nas follows:\n\n<SOURCE_TEXT>\n{{#sys.query#}}\n</SOURCE_TEXT>\n\n\
+            <TRANSLATION>\n{{#sys.query#}}\n</TRANSLATION>\n\n<EXPERT_SUGGESTIONS>\n\
+            {{#sys.query#}}\n</EXPERT_SUGGESTIONS>\nPlease take into account the expert\
+            \ suggestions when editing the translation. Edit the translation by ensuring:\n\
+            (i) accuracy (by correcting errors of addition, mistranslation, omission,\
+            \ or untranslated text),\n(ii) fluency (by applying {{#1722569329893.lang#}}grammar,\
+            \ spelling and punctuation rules and ensuring there are no unnecessary\
+            \ repetitions), \n(iii) style (by ensuring the translations reflect the\
+            \ style of the source text)\n(iv) terminology (inappropriate for context,\
+            \ inconsistent use), or\n(v) other errors.\n\nOutput only the new translation\
+            \ and nothing else."
+        selected: false
+        title: LLM 3
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1722570516204'
+      position:
+        x: 1281
+        y: 631
+      positionAbsolute:
+        x: 1281
+        y: 631
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1722570516204.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 107
+      id: '1722570550586'
+      position:
+        x: 1583
+        y: 631
+      positionAbsolute:
+        x: 1583
+        y: 631
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: google_translate
+        provider_name: google_translate
+        provider_type: builtin
+        selected: false
+        title: 翻译
+        tool_configurations:
+          dest: en
+        tool_label: 翻译
+        tool_name: translate
+        tool_parameters:
+          content:
+            type: mixed
+            value: '{{#sys.query#}}'
+        type: tool
+      height: 90
+      id: '1722824310637'
+      position:
+        x: 625
+        y: 766
+      positionAbsolute:
+        x: 625
+        y: 766
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 不支持翻译引擎
+        desc: ''
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 104
+      id: '1722824315775'
+      position:
+        x: 625
+        y: 894
+      positionAbsolute:
+        x: 625
+        y: 894
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 252
+      y: -255
+      zoom: 1

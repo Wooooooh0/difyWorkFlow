@@ -1,0 +1,130 @@
+identity:
+  name: baseus_emotion_audio_generation
+  author: wuminghui
+  label:
+    en_US: Baseus Emotion Audio Generation
+    zh_Hans: 文字转情感语音
+    pt_BR: Geração de Emotion Audio Baseus
+  icon: icon.svg
+  description:
+    en_US: Baseus Emotion Audio Generation
+    zh_Hans: base
+    pt_BR: Geração de Emotion Audio Baseus
+description:
+  human:
+    en_US: Generate Emotion audio based on user input, with Emotion generation API
+      provided by Spark
+    zh_Hans: 根据用户的输入生成情感语音
+    pt_BR: Gerar imagens com base na entrada do usuário, com API de geração
+      de imagem fornecida pela baseus
+  llm: baseus_img_generation is a tool used to generate Emotion audio from text
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    label:
+      en_US: Prompt
+      zh_Hans: 提示词
+      pt_BR: Prompt
+    human_description:
+      en_US: Audio prompt
+      zh_Hans: base
+      pt_BR: Audio prompt
+    llm_description: Audio prompt of baseus_audio_generation tooll, you should
+      describe the audio you want to generate as a list of words as possible
+      as detailed
+    form: llm
+  - name: voice
+    type: select
+    required: true
+    human_description:
+      en_US: used for selecting the inference steps
+      zh_Hans: 声色选择
+      pt_BR: used for selecting the inference steps
+    label:
+      en_US: Inference steps
+      zh_Hans: 声色选择
+      pt_BR: Inference steps
+    form: form
+    options:
+      - value: 比较甜美
+        label:
+          en_US: 比较甜美
+          zh_Hans: 比较甜美
+          pt_BR: 比较甜美
+      - value: 纯情男大学生
+        label:
+          en_US: 纯情男大学生
+          zh_Hans: 纯情男大学生
+          pt_BR: 纯情男大学生
+      - value: 嗲嗲的很酥麻
+        label:
+          en_US: 嗲嗲的很酥麻
+          zh_Hans: 嗲嗲的很酥麻
+          pt_BR: 嗲嗲的很酥麻
+    default: 比较甜美
+  - name: style
+    type: select
+    required: true
+    human_description:
+      en_US: used for selecting the inference steps
+      zh_Hans: 风格选择
+      pt_BR: used for selecting the inference steps
+    label:
+      en_US: Inference steps
+      zh_Hans: 风格选择
+      pt_BR: Inference steps
+    form: form
+    options:
+      - value: angry
+        label:
+          en_US: angry
+          zh_Hans: angry
+          pt_BR: angry
+      - value: auto
+        label:
+          en_US: auto
+          zh_Hans: auto
+          pt_BR: auto
+    default: auto
+  - name: tone
+    type: select
+    required: true
+    human_description:
+      en_US: used for selecting the inference tone
+      zh_Hans: 语气选择
+      pt_BR: used for selecting the inference tone
+    label:
+      en_US: Inference tone
+      zh_Hans: 语气选择
+      pt_BR: Inference tone
+    form: form
+    options:
+      - value: lbreak
+        label:
+          en_US: lbreak
+          zh_Hans: lbreak
+          pt_BR: lbreak
+      - value: laugh
+        label:
+          en_US: laugh
+          zh_Hans: laugh
+          pt_BR: laugh
+      - value: uv_break
+        label:
+          en_US: uv_break
+          zh_Hans: uv_break
+          pt_BR: uv_break
+    default: uv_break
+
+
+
+
+
+
+
+
+
+
+
+

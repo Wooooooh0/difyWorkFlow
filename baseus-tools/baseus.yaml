@@ -1,0 +1,66 @@
+identity:
+  author: Wuminghui
+  name: baseus
+  label:
+    en_US: Baseus
+    zh_Hans: 倍思AI
+    pt_BR: Baseus
+  description:
+    en_US: Baseus Platform Toolkit
+    zh_Hans: 倍思平台AI工具
+    pt_BR: Pacote de Ferramentas da Plataforma Baseus
+  icon: icon.svg
+  tags:
+    - image
+    - productivity
+credentials_for_provider:
+  img_base_url:
+    type: secret-input
+    required: true                                                                                       
+    label:                                                                                        
+      en_US: test to images URL                                                                            
+      zh_Hans: 文生图URL                                                                          
+    help:                                                                                                
+      en_US: Please input your test to images URL                         
+      zh_Hans: 请输入您的 文生图URL                  
+    placeholder:                                                                                        
+      en_US: Please input your test to images URL                                                   
+      zh_Hans: 请输入您的 文生图URL                  
+  audio_base_url:
+    type: secret-input
+    required: true                                                                                       
+    label:                                                                                        
+      en_US: test to audio URL                                                                            
+      zh_Hans: 文字转语音URL                                                                          
+    help:                                                                                                
+      en_US: Please input your test to audio URL                         
+      zh_Hans: 请输入您的 文字转语音URL                  
+    placeholder:                                                                                        
+      en_US: Please input your test to audio URL                                                   
+      zh_Hans: 请输入您的 文字转语音URL                  
+  newimage_base_url:
+    type: secret-input
+    required: true                                                                                       
+    label:                                                                                        
+      en_US: test to new image URL                                                                            
+      zh_Hans: 旧图换新颜URL                                                                          
+    help:                                                                                                
+      en_US: Please input your test to new image URL                         
+      zh_Hans: 请输入您的 旧图换新颜URL                  
+    placeholder:                                                                                        
+      en_US: Please input your test to new image URL                                                   
+      zh_Hans: 请输入您的 旧图换新颜URL     
+  emotion_audio_base_url:
+    type: secret-input
+    required: true                                                                                       
+    label:                                                                                        
+      en_US: test to emotion audio URL                                                                            
+      zh_Hans: 文字转情感语音URL                                                                          
+    help:                                                                                                
+      en_US: Please input your test to emotion audio URL                         
+      zh_Hans: 请输入您的 文字转情感语音URL                  
+    placeholder:                                                                                        
+      en_US: Please input your test to emotion audio URL                                                   
+      zh_Hans: 请输入您的 文字转情感语音URL            
+
+

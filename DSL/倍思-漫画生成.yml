@@ -1,0 +1,607 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 倍思-漫画生成
+kind: app
+version: 0.1.0
+workflow:
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: '亲爱的朋友，您好呀！我是超级热情的漫画助手哟！真心期待您能给我提供一段关于故事的超棒构想呢，像是故事那魅力无限的主人公设定呀，引人入胜的大致情节走向呀，还有深刻无比的核心思想主题等等哟！这样的话，我保证能为您创作出一幅精美绝伦、令人惊叹的漫画呀！ '
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions:
+    - 我想创作一副有关于保家卫国的漫画
+    - 我想创作大灰狼与小白兔的故事
+    - 我想创作小蝌蚪找妈妈的故事
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: llm-source-1721036391573-target
+      source: llm
+      sourceHandle: source
+      target: '1721036391573'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1721036459061-source-1721036448691-target
+      source: '1721036459061'
+      sourceHandle: source
+      target: '1721036448691'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1721036448691'
+        sourceType: llm
+        targetType: llm
+      id: 1721036483080-source-1721036579011-target
+      source: '1721036483080'
+      sourceHandle: source
+      target: '1721036579011'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1721036448691'
+        sourceType: llm
+        targetType: tool
+      id: 1721036579011-source-1721036611794-target
+      source: '1721036579011'
+      sourceHandle: source
+      target: '1721036611794'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1721036311433-source-llm-target
+      source: '1721036311433'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: answer
+      id: 1721036448691-source-1721036792362-target
+      source: '1721036448691'
+      sourceHandle: source
+      target: '1721036792362'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1721036448691'
+        sourceType: tool
+        targetType: llm
+      id: 1721036611794-source-1721101361457-target
+      source: '1721036611794'
+      sourceHandle: source
+      target: '1721101361457'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1721036448691'
+        sourceType: llm
+        targetType: answer
+      id: 1721101361457-source-1721036641592-target
+      source: '1721101361457'
+      sourceHandle: source
+      target: '1721036641592'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1721036391573-source-1721113344721-target
+      source: '1721036391573'
+      sourceHandle: source
+      target: '1721113344721'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: code
+      id: 1721113344721-source-1721036459061-target
+      source: '1721113344721'
+      sourceHandle: source
+      target: '1721036459061'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 54
+      id: '1721036311433'
+      position:
+        x: 78.35829619616896
+        y: 274.4942670612094
+      positionAbsolute:
+        x: 78.35829619616896
+        y: 274.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            frequency_penalty: 0.1
+            presence_penalty: 0.1
+            temperature: 0.8
+            top_p: 0.9
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - edition_type: basic
+          id: fbdcbefb-2be1-4383-9c39-f6c8f9991c82
+          role: system
+          text: "if ( {{#sys.query#}}== null):\n“”“你角色扮演成一個畅銷的童青绪本作家，你擅長以孩童的纯真眼光着看道世界，作出計多温暖人心的作品，以一隽與家人失散，不知道自己是甚磨的小蝌蚪，每次看到跟自己已身體一部分相像，他就娱以惹是同類，随著他身體逐渐强展凳化，他反而越来越迷调，故事最传才遇到胃蛙，道是\n\
+            個整自我知的故事。 ”“”\nelse:\n\nnew_story =\" 你角色扮演成一個畅銷的童青绪本作家，你擅長以孩童的纯真眼光着看道世界，作出計多温暖人心的作品\
+            \ \"+ {{#sys.query#}}\n print (story)"
+        selected: false
+        title: 主题
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: llm
+      position:
+        x: 575.7588750489413
+        y: 274.4942670612094
+      positionAbsolute:
+        x: 575.7588750489413
+        y: 274.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: ''
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            frequency_penalty: 0.1
+            presence_penalty: 0.1
+            temperature: 0.8
+            top_p: 0.9
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - id: 2a9a9eaf-7235-42e5-813a-61f309a0f38c
+          role: system
+          text: ''
+        - id: ee6b059e-9eae-4dab-b123-009d45edad97
+          role: user
+          text: "## 角色：漫画设计专家\n## 技能：\n你根据用户输入的文章主题{{#llm.text#}}，生成各个页面的大纲，输出text\
+            \ 和 image_prompt，记住你的最终目标是需要生成漫画，\n\n\n\n## 目标：\n- 确保生成的每个页面的内容节紧密相关。\n\
+            - 纵观整体整体，必须保证各页面的内容过渡连贯流畅。\n- 最终输出json字符串，详细请看以下输出示例。\n- 整个故事必须跌宕起伏，30%的页面讲述开始，50%的页面讲述过程，20%的页面讲结束。\n\
+            ## 限制：\n- 输出的json字符串必须是标准json字符串，不要包含任何XML标签和转义字符，不要出现\\n，`。\n- 严重按照输出示例中的例子输出json字符串，不要输出其他任何文本。\n\
+            - 不能超过15页的内容，即仅仅有15个章节\n\n- 严格按照输出示例的格式输出，不可以出现任何格式上的错误\n## 输出示例：\n[\n\
+            \    {\n        \"page\": \"皮諾的孤單生活\",\n        \"text\": \"在這個充滿奇幻色彩的世界裡，我們講述一個小豬的故事，它名叫皮諾。皮諾是一頭失去家人的小豬，因為他從來不知道自己的種類，所以他總是對那些和他身體部分相似的動物懷著莫名的親近感。\"\
+            ,\n        \"image prompt\": \"A small, lonely piglet named Pino wandering\
+            \ in a magical, colorful world\"\n    },\n    {\n        \"page\": \"\
+            尋找同類的皮諾\",\n        \"text\": \"皮諾看到自己圓圓的肚皮，以為那是他們共同的身份標誌；看到大大的耳朵，就幻想自己是聰明的聽者。\"\
+            ,\n        \"image prompt\": \"Pino the piglet looking at his round belly\
+            \ and big ears, imagining he belongs to different animal groups\"\n  \
+            \  },\n    {\n        \"page\": \"皮諾的困惑與孤單\",\n        \"text\": \"隨著皮諾慢慢長大，他開始意識到自己的獨特，這使他感到困惑和孤單。他的尾巴不再像其他豬的那麼短，腳蹄也不再是圓圓的，這些變化讓他更加迷茫。\"\
+            ,\n        \"image prompt\": \"Growing Pino with a unique tail and non-round\
+            \ hooves, looking confused and lonely\"\n    }\n]"
+        selected: false
+        title: 大纲
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1721036391573'
+      position:
+        x: 1037.8882754554943
+        y: 274.4942670612094
+      positionAbsolute:
+        x: 1037.8882754554943
+        y: 274.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        height: 273
+        iterator_selector:
+        - '1721036459061'
+        - result
+        output_selector:
+        - '1721036611794'
+        - files
+        output_type: array[string]
+        selected: false
+        startNodeType: llm
+        start_node_id: '1721036483080'
+        title: 循环
+        type: iteration
+        width: 1589
+      height: 273
+      id: '1721036448691'
+      position:
+        x: 2166.77429298879
+        y: 274.4942670612094
+      positionAbsolute:
+        x: 2166.77429298879
+        y: 274.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 1589
+      zIndex: 1
+    - data:
+        code: "def main(arg2: str) -> dict:\n    import json\n    data = json.loads(arg2)\n\
+          \    \n    # Create an array of objects\n    result = [{'page': item[\"\
+          page\"], 'text': item[\"text\"], 'image_prompt': item[\"image prompt\"]}\
+          \ for item in data]\n    \n    return {\n        'result': result\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[object]
+        selected: false
+        title: 改成字典
+        type: code
+        variables:
+        - value_selector:
+          - '1721113344721'
+          - result
+          variable: arg2
+      height: 54
+      id: '1721036459061'
+      position:
+        x: 1821.175224514755
+        y: 274.4942670612094
+      positionAbsolute:
+        x: 1821.175224514755
+        y: 274.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        isIterationStart: true
+        iteration_id: '1721036448691'
+        model:
+          completion_params:
+            frequency_penalty: 0.1
+            presence_penalty: 0.1
+            temperature: 0.8
+            top_p: 0.9
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - id: 6a675a91-64aa-4036-8b1e-9c0823207fbc
+          role: system
+          text: 你是一个美工设计专家，从事漫画行业，你的工作是写长形式的有吸引力的漫画，提供有创造力的美术风格建议。
+        - id: b6905f73-b97c-4e5e-9340-418f21d4e9d9
+          role: user
+          text: 基於{{#llm.text#}}，根据以下信息送代{{#1721036448691.item#}}写一个章节。請思考大方向上你想要呈現的視覺效果，這是你用來統一整體繪本風格的描述，請盡量精簡，使用英文撰寫。
+        selected: false
+        title: 美术风格
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      extent: parent
+      height: 98
+      id: '1721036483080'
+      parentId: '1721036448691'
+      position:
+        x: 117
+        y: 85
+      positionAbsolute:
+        x: 2283.77429298879
+        y: 359.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1001
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 换成别的模型也可以，有时候请求失败
+        isInIteration: true
+        iteration_id: '1721036448691'
+        model:
+          completion_params:
+            frequency_penalty: 0.1
+            presence_penalty: 0.1
+            seed: 42
+            temperature: 0.4
+            top_p: 0.9
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - id: 48c5187e-4ca9-45a7-997e-575aa25c6ed5
+          role: system
+          text: ''
+        - id: 860d29b2-9f96-4030-93de-c8e19fe17e6f
+          role: user
+          text: 完善{{#1721036483080.text#}}的prompt。補充色調、背景描述、具體風格、畫面細節，必須具體的描述，同時至少3個效果詞(光照效果、色彩色調、渲染效果、視覺風格)和1個以上的構圖技巧，注意绘画风格的统一。以構成完整的prompt，請設定隨機種子值為42，且不要有文字出現在圖中，{size="1792x1024",n=1,prompt=final_prompt}，使用英文撰寫
+        selected: false
+        title: 最终提示词
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      extent: parent
+      height: 126
+      id: '1721036579011'
+      parentId: '1721036448691'
+      position:
+        x: 423.93531465995466
+        y: 85
+      positionAbsolute:
+        x: 2590.7096076487446
+        y: 359.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1721036448691'
+        provider_id: dalle
+        provider_name: dalle
+        provider_type: builtin
+        selected: false
+        title: DALL-E 3 绘画
+        tool_configurations:
+          n: 1
+          quality: hd
+          size: horizontal
+          style: vivid
+        tool_label: DALL-E 3 绘画
+        tool_name: dalle3
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#1721036579011.text#}}'
+        type: tool
+      extent: parent
+      height: 168
+      id: '1721036611794'
+      parentId: '1721036448691'
+      position:
+        x: 725
+        y: 85
+      positionAbsolute:
+        x: 2891.77429298879
+        y: 359.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        answer: '{{#1721036611794.files#}}
+
+          内容：{{#1721101361457.text#}}'
+        desc: ''
+        isInIteration: true
+        iteration_id: '1721036448691'
+        selected: false
+        title: 出图
+        type: answer
+        variables: []
+      extent: parent
+      height: 126
+      id: '1721036641592'
+      parentId: '1721036448691'
+      position:
+        x: 1329
+        y: 85
+      positionAbsolute:
+        x: 3495.77429298879
+        y: 359.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        answer: 输出所有结果
+        desc: 循环必须要有结果
+        selected: false
+        title: 报错
+        type: answer
+        variables: []
+      height: 132
+      id: '1721036792362'
+      position:
+        x: 3956.2385033286246
+        y: 274.4942670612094
+      positionAbsolute:
+        x: 3956.2385033286246
+        y: 274.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1721036448691'
+        model:
+          completion_params:
+            frequency_penalty: 0.1
+            presence_penalty: 0.1
+            temperature: 0.8
+            top_p: 0.9
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - id: dfe1ab4a-cfe5-4873-84f7-beff079161cd
+          role: system
+          text: ''
+        - id: 515c79d5-eb8e-4701-b7b6-3b9d853d0a6e
+          role: user
+          text: 你是一个总结文本的专家，将{{#1721036448691.item#}}总结成一段文字，语言风格生动形象，尽量保证在50-100字之间，输出语言确保为中文。
+        selected: false
+        title: 语言
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      extent: parent
+      height: 98
+      id: '1721101361457'
+      parentId: '1721036448691'
+      position:
+        x: 1029
+        y: 85
+      positionAbsolute:
+        x: 3195.77429298879
+        y: 359.4942670612094
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "def main(arg1: str) -> str:\n    import json;\n\n    return {\n   \
+          \     \"result\": arg1.replace(\"```json\\n\", \"\").replace(\"\\n```\"\
+          , \"\")\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 改成json格式
+        type: code
+        variables:
+        - value_selector:
+          - '1721036391573'
+          - text
+          variable: arg1
+      height: 54
+      id: '1721113344721'
+      position:
+        x: 1483.3491269576677
+        y: 274.4942670612094
+      positionAbsolute:
+        x: 1483.3491269576677
+        y: 274.4942670612094
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -752.6371464943957
+      y: 244.50286646939523
+      zoom: 0.5000000000000002

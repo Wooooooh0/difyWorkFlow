@@ -1,0 +1,239 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 倍思-AI图标生成
+kind: app
+version: 0.1.0
+workflow:
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1722215595797-source-1722215600749-target
+      source: '1722215595797'
+      sourceHandle: source
+      target: '1722215600749'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: answer
+      id: 1722215653541-source-answer-target
+      source: '1722215653541'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1722215600749-source-1722217182751-target
+      source: '1722215600749'
+      sourceHandle: source
+      target: '1722217182751'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: tool
+      id: 1722217182751-source-1722215653541-target
+      source: '1722217182751'
+      sourceHandle: source
+      target: '1722215653541'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 52
+      id: '1722215595797'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1722215653541.files#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 105
+      id: answer
+      position:
+        x: 1125
+        y: 471
+      positionAbsolute:
+        x: 1125
+        y: 471
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: qwen2-instruct
+          provider: xinference
+        prompt_template:
+        - id: 39d3f5e9-e0e5-4454-abb4-83885c751eed
+          role: system
+          text: 将用户的输入，整理总结，简洁输出用户用来描绘图片的提示词，不要进行过多的润色
+        - id: 4062b4df-a3dc-488e-af36-05f7024695c9
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: 提示词解析
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1722215600749'
+      position:
+        x: 381
+        y: 282
+      positionAbsolute:
+        x: 381
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        provider_id: baseus
+        provider_name: baseus
+        provider_type: builtin
+        selected: false
+        title: 文生图
+        tool_configurations: {}
+        tool_label: 文生图
+        tool_name: baseus_img_generation
+        tool_parameters:
+          high:
+            type: mixed
+            value: '512'
+          num_image:
+            type: mixed
+            value: '1'
+          prompt:
+            type: mixed
+            value: '{{#1722215600749.text#}}'
+          style:
+            type: mixed
+            value: '{{#1722217182751.text#}}'
+          width:
+            type: mixed
+            value: '512'
+        type: tool
+      height: 52
+      id: '1722215653541'
+      position:
+        x: 739
+        y: 471
+      positionAbsolute:
+        x: 739
+        y: 471
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: qwen2-instruct
+          provider: xinference
+        prompt_template:
+        - id: 34b37bd5-9021-4623-ad32-52d176931f49
+          role: system
+          text: '将用户的输入，整理总结，简洁输出用户用来描绘图片的风格，不要进行过多的润色，默认风格为anime，以下是所有的风格，输出任意一项：
+
+            cartoon and Chinese style，photography, anime ,oil painting, watercolor,
+            sketch, portrait, flat illustration。'
+        - id: 5c895cf2-0cc1-4130-984b-8e1a25d56c05
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: 风格提取
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1722217182751'
+      position:
+        x: 381
+        y: 471
+      positionAbsolute:
+        x: 381
+        y: 471
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 6.126871402628694
+      y: -38.086331850422084
+      zoom: 1.1665290443361072

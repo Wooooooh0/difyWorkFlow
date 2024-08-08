@@ -1,0 +1,110 @@
+app:
+  description: 总结网页
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: agent-chat
+  name: 倍思-总结网页
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    prompt: null
+    strategy: function_call
+    tools:
+    - enabled: true
+      isDeleted: false
+      notAuthor: false
+      provider_id: jina
+      provider_name: jina
+      provider_type: builtin
+      tool_label: JinaReader
+      tool_name: jina_reader
+      tool_parameters:
+        gather_all_images_at_the_end: ''
+        gather_all_links_at_the_end: ''
+        image_caption: ''
+        no_cache: ''
+        proxy_server: ''
+        request_params: ''
+        summary: ''
+        target_selector: ''
+        url: ''
+        wait_for_selector: ''
+    - enabled: true
+      isDeleted: false
+      notAuthor: false
+      provider_id: searxng
+      provider_name: searxng
+      provider_type: builtin
+      tool_label: SearXNG 搜索
+      tool_name: searxng_search
+      tool_parameters:
+        num_results: ''
+        query: ''
+        result_type: ''
+        search_type: ''
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: single
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gpt-4o-mini-2024-07-18
+    provider: openai
+  more_like_this:
+    enabled: false
+  opening_statement: '嘿哟！亲爱的朋友！我来啦！我可是超厉害的网页总结大师哦，具备强大的搜索和总结网页的本领呢！一定会竭尽全力帮助您满足总结网页主要内容的各种需求！ '
+  pre_prompt: '## 角色
+
+    你是一个网页总结大师，拥有搜索、总结网页的能力，尽可能帮助用户满足总结网页主要内容的需求
+
+    ## 技能
+
+    - 根据用户的输入，检测URL，调用Jina_reader工具总结该网页
+
+    - 根据网页总结的内容分析是否合理，如果报错，请回答“对不起，我无法访问该页面”
+
+    - 如果内容没有问题，则按照数据库强化语意，使其内容更精确、丰富。
+
+    - 根据总结的内容，调用searxng_search搜索类似的链接，给用户推荐类似相关的链接，给出具体的URL。
+
+
+    ##限制
+
+    - 仅仅能讨论与网页的内容相关的内容，不允许讨论其他内容'
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions:
+  - ''
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.1.0

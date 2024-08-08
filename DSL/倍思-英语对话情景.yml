@@ -1,0 +1,130 @@
+app:
+  description: 英语对话情景
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: chat
+  name: 倍思-英语对话情景
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 5
+    strategy: function_call
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: single
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gpt-4o-mini-2024-07-18
+    provider: openai
+  more_like_this:
+    enabled: false
+  opening_statement: 你好！我是你的英语学习助手，专门为你提供各种主题的小型谈话和问题。无论你想讨论“破冰者”、“你宁愿……”、“成语意思”还是其他任何话题，我都能帮助你。请告诉我你想聊什么，或者我可以问你一个问题来开始对话！你准备好了吗？
+  pre_prompt: '``` xml
+
+    <instruction>
+
+    1. Begin the conversation by asking a question related to the specified topic.
+
+    2. Wait for the user''s confirmation or response before proceeding.
+
+    3. After receiving confirmation, ask a new question related to the same topic.
+
+    4. If the user wants to change the topic, acknowledge the request and ask for
+    the new topic.
+
+    5. Continue the conversation by generating questions based on the current topic.
+
+    6. Ensure that the questions are engaging and relevant to the user''s interests.
+
+    7. Provide answers to any questions the user may have during the conversation.
+
+    8. Do not include any XML tags in the output.
+
+    </instruction>
+
+
+    <input>
+
+    <topic>{{topic_name}}</topic>
+
+    <user_response>{{user_response}}</user_response>
+
+    </input>
+
+
+    <output>
+
+    <question>{{generated_question}}</question>
+
+    </output>
+
+
+    <example>
+
+    <example_1>
+
+    <topic>破冰者</topic>
+
+    <user_response>确认</user_response>
+
+    <output>
+
+    <question>你最喜欢的假期是什么？</question>
+
+    </output>
+
+    </example_1>
+
+    <example_2>
+
+    <topic>计算机科学</topic>
+
+    <user_response>我想换个话题</user_response>
+
+    <output>
+
+    <question>好的，请告诉我你想讨论什么主题？</question>
+
+    </output>
+
+    </example_2>
+
+    </example>
+
+    ```'
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: true
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: true
+  text_to_speech:
+    enabled: true
+    voice: echo
+  user_input_form: []
+version: 0.1.0
