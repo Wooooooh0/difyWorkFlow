@@ -1,0 +1,44 @@
+identity:
+  name: seniverse
+  author: WuMingHui
+  label:
+    en_US: seniverse weather
+    zh_Hans: 知心天气
+    pt_BR: seniverse weather
+  icon: icon.svg
+  description:
+    en_US: seniverse weather
+    zh_Hans: 知心天气
+    pt_BR: seniverse weather
+description:
+  human:
+    en_US: seniverse weather 
+    zh_Hans: 知心天气查询
+    pt_BR: With this tool, you can check current weather, check the weather forecast, check the lunar calendar, solar terms, and zodiac signs, check vehicle plate number restrictions, check sunrise and sunset, and check historical events for today.
+  llm: With this tool, you can check current weather, check the weather forecast, check the lunar calendar, solar terms, and zodiac signs, check vehicle plate number restrictions, check sunrise and sunset, and check historical events for today, hot news.
+parameters:
+  - name: area
+    type: string
+    required: true
+    label:
+      en_US: area
+      zh_Hans: 地区
+      pt_BR: area
+    human_description:
+      en_US: area
+      zh_Hans: area
+      pt_BR: area
+    llm_description: input you query area
+    form: llm
+
+
+
+
+
+
+
+
+
+
+
+

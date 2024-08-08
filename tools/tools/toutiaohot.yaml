@@ -1,0 +1,31 @@
+identity:
+  name: toutiaohot
+  author: WuMingHui
+  label:
+    en_US: check today's trending news.
+    zh_Hans: 查询今天热点新闻
+    pt_BR: check today's trending news.
+  icon: icon.svg
+  description:
+    en_US: check today's trending news.
+    zh_Hans: 查询今天热点新闻
+    pt_BR: check today's trending news.
+description:
+  human:
+    en_US: check today's trending news.
+    zh_Hans: 查询今天热点新闻
+    pt_BR: check today's trending news.
+  llm: check today's trending news.
+parameters:
+
+
+
+
+
+
+
+
+
+
+
+

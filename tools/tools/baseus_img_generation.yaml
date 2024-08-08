@@ -1,0 +1,109 @@
+identity:
+  name: baseus_img_generation
+  author: wuminghui
+  label:
+    en_US: Baseus Images Generation
+    zh_Hans: 文生图
+    pt_BR: Geração de imagens Baseus
+  icon: icon.svg
+  description:
+    en_US: Baseus Image Generation
+    zh_Hans: base
+    pt_BR: Geração de imagens Baseus
+description:
+  human:
+    en_US: Generate images based on user input, with image generation API
+      provided by Spark
+    zh_Hans: 根据用户的输入提示词生成文生图
+    pt_BR: Gerar imagens com base na entrada do usuário, com API de geração
+      de imagem fornecida pela baseus
+  llm: baseus_img_generation is a tool used to generate images from text
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    label:
+      en_US: Prompt
+      zh_Hans: 提示词
+      pt_BR: Prompt
+    human_description:
+      en_US: Image prompt
+      zh_Hans: base
+      pt_BR: Image prompt
+    llm_description: Image prompt of baseus_img_generation tooll, you should
+      describe the image you want to generate as a list of words as possible
+      as detailed
+    form: llm
+  - name: style
+    type: string
+    required: true
+    label:
+      en_US: Style
+      zh_Hans: 风格
+      pt_BR: Style
+    human_description:
+      en_US: Image Style
+      zh_Hans: Image Style
+      pt_BR: Image Style
+    llm_description: the Image Style, The painting style has a cartoon and Chinese style, photography, anime ,oil painting, watercolor, sketch, portrait, flat illustration, The default style is auto.
+    form: llm
+  - name: NegativePrompt
+    type: string
+    required: false
+    label:
+      en_US: Negative Direction Prompt
+      zh_Hans: 反向提示词
+      pt_BR: Negative Direction Prompt
+    human_description:
+      en_US: Negative Direction Prompt
+      zh_Hans: Negative Direction Prompt
+      pt_BR: Negative Direction Prompt
+    llm_description: Negative Direction Prompt
+    form: llm
+  - name: num_image
+    type: string
+    required: true
+    label:
+      en_US:  Number of generated images
+      zh_Hans: 生成图片数量
+      pt_BR:  Number of generated images
+    human_description:
+      en_US:  Number of generated images.
+      zh_Hans: 生成图片数量。
+      pt_BR:  Number of generated images.
+    form: llm
+    llm_description: Number of generated images, The default number is 1 .
+  - name: width
+    type: string
+    required: true
+    label:
+      en_US: image width
+      zh_Hans: 图片的宽
+    human_description:
+      en_US: Set the width of your output image.
+      zh_Hans: 设置输出图片的宽。
+    llm_description: Set the width of your output image. The min width is 1024, the Max width is 1024, The default width is 1024 .
+    form: llm
+  - name: high
+    type: string
+    required: true
+    label:
+      en_US: image high
+      zh_Hans: 图片的高
+    human_description:
+      en_US: Set the high of your output image.
+      zh_Hans: 设置输出图片的高。
+    llm_description: Set the height of your output image, The min height is 1024, the Max height is 1024, The default height is 1024 .
+    form: llm
+
+
+
+
+
+
+
+
+
+
+
+

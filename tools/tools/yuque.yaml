@@ -1,0 +1,126 @@
+identity:
+  name: yuque
+  author: WuMingHui
+  label:
+    en_US: yuque Express inquiry 
+    zh_Hans: 快递鸟快递查询
+    pt_BR: yuque Express inquiry
+  icon: icon.svg
+  description:
+    en_US: yuque Express inquiry
+    zh_Hans: 快递鸟快递查询
+    pt_BR: yuque Express inquiry
+description:
+  human:
+    en_US: yuque Express inquiry
+    zh_Hans: 快递鸟快递查询
+    pt_BR: yuque Express inquiry, 
+  llm: Express inquiry, input your tracking number
+parameters:
+  - name: tracking_number
+    type: string
+    required: true
+    label:
+      en_US: tracking_number
+      zh_Hans: 快递单号
+      pt_BR: tracking_number
+    human_description:
+      en_US: tracking_number
+      zh_Hans: tracking_number
+      pt_BR: tracking_number
+    llm_description: input your tracking number
+    form: llm
+  - name: number
+    type: string
+    required: false
+    label:
+      en_US: number
+      zh_Hans: 如果是顺丰快递，请输入手机号码后4位
+      pt_BR: number
+    human_description:
+      en_US: number
+      zh_Hans: number
+      pt_BR: number
+    llm_description: If you are using SF Express, please enter the last 4 digits of your phone number
+    form: llm
+  - name: express_company
+    type: select
+    required: true
+    human_description:
+      en_US: selecting express company
+      zh_Hans: 选择快递公司
+      pt_BR: selecting express company
+    label:
+      en_US: express company
+      zh_Hans: 快递公司
+      pt_BR: express company
+    form: llm
+    options:
+      - value: SF
+        label:
+          en_US: SF
+          zh_Hans: 顺丰快递
+          pt_BR: SF
+      - value: ZTO
+        label:
+          en_US: ZTO
+          zh_Hans: 中通快递
+          pt_BR: ZTO
+      - value: YTO
+        label:
+          en_US: YTO
+          zh_Hans: 圆通快递
+          pt_BR: YTO
+      - value: YD
+        label:
+          en_US: YD
+          zh_Hans: 韵达快递
+          pt_BR: YD
+      - value: STO
+        label:
+          en_US: STO
+          zh_Hans: 申通快递
+          pt_BR: STO
+      - value: JD
+        label:
+          en_US: JD
+          zh_Hans: 京东快递
+          pt_BR: JD
+      - value: YZPY
+        label:
+          en_US: YZPY
+          zh_Hans: 邮政快递包裹
+          pt_BR: YZPY
+      - value: EMS
+        label:
+          en_US: EMS
+          zh_Hans: EMS快递
+          pt_BR: EMS
+      - value: JTSD
+        label:
+          en_US: JTSD
+          zh_Hans: 极兔速递
+          pt_BR: JTSD
+      - value: DBL
+        label:
+          en_US: DBL
+          zh_Hans: 德邦快递
+          pt_BR: DBL
+      - value: HTKY
+        label:
+          en_US: HTKY
+          zh_Hans: 百世快递
+          pt_BR: HTKY
+    default: SF
+
+
+
+
+
+
+
+
+
+
+
+
